@@ -1,0 +1,60 @@
+{
+  "title": "Matheus Gabriel · Área de Comando",
+  "subtitle": "Central de acesso rápido aos serviços do projeto",
+  "links": [
+    {
+      "id": "aws-console",
+      "name": "AWS Console",
+      "description": "Painel principal da sua conta AWS",
+      "url": "https://console.aws.amazon.com/",
+      "category": "Nuvem",
+      "icon": "cloud",
+      "status": "ready"
+    },
+    {
+      "id": "oracle-cloud",
+      "name": "Oracle Cloud (OCI)",
+      "description": "Instâncias Always Free e rede virtual",
+      "url": "https://cloud.oracle.com/",
+      "category": "Nuvem",
+      "icon": "server",
+      "status": "ready"
+    },
+    {
+      "id": "home-assistant",
+      "name": "Home Assistant",
+      "description": "Automação residencial (configure a URL do seu servidor)",
+      "url": "",
+      "category": "Automação",
+      "icon": "home",
+      "status": "pending"
+    },
+    {
+      "id": "n8n",
+      "name": "n8n Automações",
+      "description": "Fluxos e webhooks (configure a URL do seu n8n)",
+      "url": "",
+      "category": "Automação",
+      "icon": "workflow",
+      "status": "pending"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "description": "Repositórios e edição deste painel",
+      "url": "https://github.com/matheusantunesx123-hub",
+      "category": "Código",
+      "icon": "code",
+      "status": "ready"
+    },
+    {
+      "id": "duckdns",
+      "name": "DuckDNS",
+      "description": "Gerenciar subdomínios dinâmicos gratuitos",
+      "url": "https://www.duckdns.org/",
+      "category": "Rede",
+      "icon": "globe",
+      "status": "ready"
+    }
+  ]
+}
