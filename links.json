@@ -3,6 +3,15 @@
   "subtitle": "Central de acesso rápido aos serviços e automações do projeto",
   "links": [
     {
+      "id": "painel-oracle",
+      "name": "Painel do Servidor Oracle",
+      "description": "Central de Comando Web: telemetria (RAM/CPU/Disco), processos PM2 e controle do servidor",
+      "url": "https://157-151-15-149.sslip.io/",
+      "category": "Nuvem",
+      "icon": "server",
+      "status": "ready"
+    },
+    {
       "id": "home-assistant",
       "name": "Home Assistant",
       "description": "Painel central de automação residencial e controle de sensores",
@@ -49,8 +58,8 @@
     },
     {
       "id": "oracle-cloud",
-      "name": "Oracle Cloud (OCI)",
-      "description": "Servidor de computação Always Free e infraestrutura na nuvem",
+      "name": "Oracle Cloud (Console OCI)",
+      "description": "Painel oficial da infraestrutura Oracle Cloud Always Free",
       "url": "https://cloud.oracle.com/",
       "category": "Nuvem",
       "icon": "server",
