@@ -356,14 +356,17 @@
     const STORAGE_KEY = "painel_comando_custom_links_v1";
     const FALLBACK_CONFIG = {
       title: "Matheus Gabriel · Área de Comando",
-      subtitle: "Central de acesso rápido aos serviços do projeto",
+      subtitle: "Central de acesso rápido aos serviços e automações do projeto",
       links: [
-        { id: "aws-console", name: "AWS Console", description: "Painel principal da sua conta AWS", url: "https://console.aws.amazon.com/", category: "Nuvem", icon: "cloud", status: "ready" },
-        { id: "oracle-cloud", name: "Oracle Cloud (OCI)", description: "Instâncias Always Free e rede virtual", url: "https://cloud.oracle.com/", category: "Nuvem", icon: "server", status: "ready" },
-        { id: "home-assistant", name: "Home Assistant", description: "Automação residencial (configure a URL do seu servidor)", url: "", category: "Automação", icon: "home", status: "pending" },
-        { id: "n8n", name: "n8n Automações", description: "Fluxos e webhooks (configure a URL do seu n8n)", url: "", category: "Automação", icon: "workflow", status: "pending" },
-        { id: "github", name: "GitHub", description: "Repositórios e edição deste painel", url: "https://github.com/matheusantunesx123-hub", category: "Código", icon: "code", status: "ready" },
-        { id: "duckdns", name: "DuckDNS", description: "Gerenciar subdomínios dinâmicos gratuitos", url: "https://www.duckdns.org/", category: "Rede", icon: "globe", status: "ready" }
+        { id: "home-assistant", name: "Home Assistant", description: "Painel central de automação residencial e controle de sensores", url: "https://ha.157-151-15-149.sslip.io/", category: "Automação", icon: "home", status: "ready" },
+        { id: "n8n", name: "n8n Automações", description: "Fluxos inteligentes, integrações e webhooks ativos", url: "https://n8n.157-151-15-149.sslip.io/", category: "Automação", icon: "workflow", status: "ready" },
+        { id: "omniroute", name: "OmniRoute (IA)", description: "Roteador e gateway de modelos LLM e agentes de inteligência artificial", url: "https://ai.157-151-15-149.sslip.io/", category: "Inteligência Artificial", icon: "brain", status: "ready" },
+        { id: "esphome", name: "ESPHome Dashboard", description: "Gerenciamento, compilação e gravação de microcontroladores ESP32/ESP8266", url: "http://157.151.15.149:2027/", category: "Dispositivos", icon: "chip", status: "ready" },
+        { id: "iot-dashboard", name: "Painel IoT", description: "Interface e dashboards dos dispositivos e telemetria", url: "https://iot.157-151-15-149.sslip.io/", category: "Dispositivos", icon: "server", status: "ready" },
+        { id: "oracle-cloud", name: "Oracle Cloud (OCI)", description: "Servidor de computação Always Free e infraestrutura na nuvem", url: "https://cloud.oracle.com/", category: "Nuvem", icon: "server", status: "ready" },
+        { id: "aws-console", name: "AWS Console", description: "Painel de administração da sua conta AWS (cli-admin)", url: "https://console.aws.amazon.com/", category: "Nuvem", icon: "cloud", status: "ready" },
+        { id: "duckdns", name: "DuckDNS", description: "Gerenciamento de DNS dinâmico e subdomínios gratuitos", url: "https://www.duckdns.org/", category: "Rede", icon: "globe", status: "ready" },
+        { id: "github", name: "GitHub (Repositório)", description: "Código-fonte, controle de versão e configurações deste painel", url: "https://github.com/matheusantunesx123-hub/painel", category: "Código", icon: "code", status: "ready" }
       ]
     };
 
@@ -373,7 +376,9 @@
       home: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"/></svg>`,
       workflow: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M9 6h4a2 2 0 0 1 2 2v7"/></svg>`,
       code: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>`,
-      globe: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>`
+      globe: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>`,
+      chip: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>`,
+      brain: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04zm5 0A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/></svg>`
     };
 
     let baseLinks = [];
