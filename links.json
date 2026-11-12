@@ -1,20 +1,20 @@
 {
   "title": "Matheus Gabriel · Área de Comando",
-  "subtitle": "Central de acesso rápido aos serviços e automações do projeto",
+  "subtitle": "Central única de acesso a todos os projetos, automações e servidores em nuvem",
   "links": [
     {
       "id": "painel-oracle",
       "name": "Painel do Servidor Oracle",
-      "description": "Central de Comando Web: telemetria (RAM/CPU/Disco), processos PM2 e controle do servidor",
+      "description": "Central de telemetria em tempo real (RAM, CPU, ZRAM, Disco), controle de processos PM2 e status dos bots",
       "url": "https://157-151-15-149.sslip.io/",
-      "category": "Nuvem",
+      "category": "Servidores",
       "icon": "server",
       "status": "ready"
     },
     {
       "id": "home-assistant",
       "name": "Home Assistant",
-      "description": "Painel central de automação residencial e controle de sensores",
+      "description": "Painel central de automação residencial, dashboards, sensores Zigbee/Wi-Fi e integração Alexa",
       "url": "https://ha.157-151-15-149.sslip.io/",
       "category": "Automação",
       "icon": "home",
@@ -23,7 +23,7 @@
     {
       "id": "n8n",
       "name": "n8n Automações",
-      "description": "Fluxos inteligentes, integrações e webhooks ativos",
+      "description": "Fluxos inteligentes de trabalho, webhooks ativos e orquestração de integrações",
       "url": "https://n8n.157-151-15-149.sslip.io/",
       "category": "Automação",
       "icon": "workflow",
@@ -32,62 +32,98 @@
     {
       "id": "omniroute",
       "name": "OmniRoute (IA)",
-      "description": "Roteador e gateway de modelos LLM e agentes de inteligência artificial",
+      "description": "Roteador e gateway de modelos LLM, agentes inteligentes e endpoints de inteligência artificial",
       "url": "https://ai.157-151-15-149.sslip.io/",
-      "category": "Inteligência Artificial",
+      "category": "IA",
       "icon": "brain",
       "status": "ready"
     },
     {
       "id": "esphome",
       "name": "ESPHome Dashboard",
-      "description": "Gerenciamento, compilação e gravação de microcontroladores ESP32/ESP8266",
+      "description": "Gerenciamento, compilação de firmware e gravação OTA de microcontroladores ESP32/ESP8266",
       "url": "http://157.151.15.149:2027/",
       "category": "Dispositivos",
       "icon": "chip",
       "status": "ready"
     },
     {
-      "id": "iot-dashboard",
-      "name": "Painel IoT",
-      "description": "Interface e dashboards dos dispositivos e telemetria",
+      "id": "central-iot",
+      "name": "Central IoT & Telemetria",
+      "description": "Interface web de monitoramento e telemetria dos dispositivos IoT, sensores e relés",
       "url": "https://iot.157-151-15-149.sslip.io/",
       "category": "Dispositivos",
-      "icon": "server",
+      "icon": "wifi",
+      "status": "ready"
+    },
+    {
+      "id": "aws-lambda-alexa",
+      "name": "AWS Lambda (Alexa HA)",
+      "description": "Função serverless HomeAssistantAlexa que conecta o Home Assistant à skill Alexa Smart Home",
+      "url": "https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions/HomeAssistantAlexa",
+      "category": "Automação",
+      "icon": "cloud",
       "status": "ready"
     },
     {
       "id": "oracle-cloud",
       "name": "Oracle Cloud (Console OCI)",
-      "description": "Painel oficial da infraestrutura Oracle Cloud Always Free",
+      "description": "Console oficial de gerenciamento da infraestrutura Always Free na nuvem Oracle",
       "url": "https://cloud.oracle.com/",
-      "category": "Nuvem",
+      "category": "Servidores",
       "icon": "server",
       "status": "ready"
     },
     {
       "id": "aws-console",
       "name": "AWS Console",
-      "description": "Painel de administração da sua conta AWS (cli-admin)",
+      "description": "Painel de administração da conta AWS e serviços em nuvem (cli-admin)",
       "url": "https://console.aws.amazon.com/",
-      "category": "Nuvem",
+      "category": "Servidores",
       "icon": "cloud",
       "status": "ready"
     },
     {
       "id": "duckdns",
       "name": "DuckDNS",
-      "description": "Gerenciamento de DNS dinâmico e subdomínios gratuitos",
+      "description": "Gerenciamento de DNS dinâmico e subdomínios gratuitos para os servidores",
       "url": "https://www.duckdns.org/",
-      "category": "Rede",
+      "category": "Servidores",
       "icon": "globe",
       "status": "ready"
     },
     {
-      "id": "github",
-      "name": "GitHub (Repositório)",
-      "description": "Código-fonte, controle de versão e configurações deste painel",
+      "id": "site-progweb-2026",
+      "name": "Site Pessoal (ProgWeb 2026)",
+      "description": "Projeto e website acadêmico de Programação Web hospedado com GitHub Pages",
+      "url": "https://matheusantunesx123-hub.github.io/Site-Pessoal-ProgWeb-2026/",
+      "category": "Projetos",
+      "icon": "globe",
+      "status": "ready"
+    },
+    {
+      "id": "site-pessoal",
+      "name": "Site Pessoal Portfólio",
+      "description": "Website pessoal e portfólio profissional hospedado no GitHub Pages",
+      "url": "https://matheusantunesx123-hub.github.io/Site-Pessoal/",
+      "category": "Projetos",
+      "icon": "globe",
+      "status": "ready"
+    },
+    {
+      "id": "github-painel",
+      "name": "GitHub (Repositório Painel)",
+      "description": "Código-fonte, controle de versão e configurações desta Área de Comando",
       "url": "https://github.com/matheusantunesx123-hub/painel",
+      "category": "Código",
+      "icon": "code",
+      "status": "ready"
+    },
+    {
+      "id": "github-perfil",
+      "name": "GitHub (Perfil Completo)",
+      "description": "Perfil com todos os repositórios, projetos abertos e privados no GitHub",
+      "url": "https://github.com/matheusantunesx123-hub",
       "category": "Código",
       "icon": "code",
       "status": "ready"
