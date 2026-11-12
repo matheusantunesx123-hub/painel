@@ -1,59 +1,86 @@
 {
   "title": "Matheus Gabriel · Área de Comando",
-  "subtitle": "Central de acesso rápido aos serviços do projeto",
+  "subtitle": "Central de acesso rápido aos serviços e automações do projeto",
   "links": [
     {
-      "id": "aws-console",
-      "name": "AWS Console",
-      "description": "Painel principal da sua conta AWS",
-      "url": "https://console.aws.amazon.com/",
-      "category": "Nuvem",
-      "icon": "cloud",
+      "id": "home-assistant",
+      "name": "Home Assistant",
+      "description": "Painel central de automação residencial e controle de sensores",
+      "url": "https://ha.157-151-15-149.sslip.io/",
+      "category": "Automação",
+      "icon": "home",
+      "status": "ready"
+    },
+    {
+      "id": "n8n",
+      "name": "n8n Automações",
+      "description": "Fluxos inteligentes, integrações e webhooks ativos",
+      "url": "https://n8n.157-151-15-149.sslip.io/",
+      "category": "Automação",
+      "icon": "workflow",
+      "status": "ready"
+    },
+    {
+      "id": "omniroute",
+      "name": "OmniRoute (IA)",
+      "description": "Roteador e gateway de modelos LLM e agentes de inteligência artificial",
+      "url": "https://ai.157-151-15-149.sslip.io/",
+      "category": "Inteligência Artificial",
+      "icon": "brain",
+      "status": "ready"
+    },
+    {
+      "id": "esphome",
+      "name": "ESPHome Dashboard",
+      "description": "Gerenciamento, compilação e gravação de microcontroladores ESP32/ESP8266",
+      "url": "http://157.151.15.149:2027/",
+      "category": "Dispositivos",
+      "icon": "chip",
+      "status": "ready"
+    },
+    {
+      "id": "iot-dashboard",
+      "name": "Painel IoT",
+      "description": "Interface e dashboards dos dispositivos e telemetria",
+      "url": "https://iot.157-151-15-149.sslip.io/",
+      "category": "Dispositivos",
+      "icon": "server",
       "status": "ready"
     },
     {
       "id": "oracle-cloud",
       "name": "Oracle Cloud (OCI)",
-      "description": "Instâncias Always Free e rede virtual",
+      "description": "Servidor de computação Always Free e infraestrutura na nuvem",
       "url": "https://cloud.oracle.com/",
       "category": "Nuvem",
       "icon": "server",
       "status": "ready"
     },
     {
-      "id": "home-assistant",
-      "name": "Home Assistant",
-      "description": "Automação residencial (configure a URL do seu servidor)",
-      "url": "",
-      "category": "Automação",
-      "icon": "home",
-      "status": "pending"
-    },
-    {
-      "id": "n8n",
-      "name": "n8n Automações",
-      "description": "Fluxos e webhooks (configure a URL do seu n8n)",
-      "url": "",
-      "category": "Automação",
-      "icon": "workflow",
-      "status": "pending"
-    },
-    {
-      "id": "github",
-      "name": "GitHub",
-      "description": "Repositórios e edição deste painel",
-      "url": "https://github.com/matheusantunesx123-hub",
-      "category": "Código",
-      "icon": "code",
+      "id": "aws-console",
+      "name": "AWS Console",
+      "description": "Painel de administração da sua conta AWS (cli-admin)",
+      "url": "https://console.aws.amazon.com/",
+      "category": "Nuvem",
+      "icon": "cloud",
       "status": "ready"
     },
     {
       "id": "duckdns",
       "name": "DuckDNS",
-      "description": "Gerenciar subdomínios dinâmicos gratuitos",
+      "description": "Gerenciamento de DNS dinâmico e subdomínios gratuitos",
       "url": "https://www.duckdns.org/",
       "category": "Rede",
       "icon": "globe",
+      "status": "ready"
+    },
+    {
+      "id": "github",
+      "name": "GitHub (Repositório)",
+      "description": "Código-fonte, controle de versão e configurações deste painel",
+      "url": "https://github.com/matheusantunesx123-hub/painel",
+      "category": "Código",
+      "icon": "code",
       "status": "ready"
     }
   ]
