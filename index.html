@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matheus Gabriel · Área de Comando</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --surface: #131a26;
+      --surface-hover: #1a2333;
+      --border: #232f45;
+      --text: #e6edf7;
+      --muted: #8b9bb4;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --warn: #f59e0b;
+      --warn-soft: rgba(245, 158, 11, 0.14);
+      --ok: #34d399;
+      --ok-soft: rgba(52, 211, 153, 0.14);
+      --danger: #f87171;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background: radial-gradient(circle at top, #131c2e 0%, var(--bg) 55%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 32px 20px 64px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .brand h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand p {
+      color: var(--muted);
+      margin-top: 4px;
+      font-size: 0.95rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button, .btn {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 9px 14px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    button:hover, .btn:hover {
+      background: var(--surface-hover);
+      border-color: var(--accent);
+    }
+
+    button.primary {
+      background: var(--accent-soft);
+      border-color: rgba(56, 189, 248, 0.45);
+      color: var(--accent);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 42px 11px 14px;
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .search-wrap input:focus {
+      border-color: var(--accent);
+    }
+
+    .kbd {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.75rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2px 6px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.83rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .pill.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: rgba(56, 189, 248, 0.45);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      background: var(--surface-hover);
+      border-color: var(--accent);
+    }
+
+    .card.pending {
+      border-style: dashed;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+
+    .badge.ready { background: var(--ok-soft); color: var(--ok); }
+    .badge.pending { background: var(--warn-soft); color: var(--warn); }
+    .badge.local { background: var(--accent-soft); color: var(--accent); }
+
+    .card h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .card p {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.45;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .url-preview {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 200px;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .mini-btn {
+      padding: 3px 8px;
+      font-size: 0.74rem;
+      border-radius: 6px;
+    }
+
+    dialog {
+      margin: auto;
+      background: #111827;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      width: min(460px, 92vw);
+    }
+
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.65);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .form-group input, .form-group select {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 9px 11px;
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      border: 1px dashed var(--border);
+      border-radius: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <h1 id="page-title">Matheus Gabriel · Área de Comando</h1>
+        <p id="page-subtitle">Central de acesso rápido aos serviços do projeto</p>
+      </div>
+      <div class="actions">
+        <button class="primary" id="btn-add">+ Novo atalho</button>
+        <button id="btn-export" title="Baixar links.json atualizado">Exportar links.json</button>
+      </div>
+    </header>
+
+    <div class="toolbar">
+      <div class="search-wrap">
+        <input id="search" type="search" placeholder="Buscar serviço ou categoria..." autocomplete="off" />
+        <span class="kbd">/</span>
+      </div>
+      <div class="filters" id="filters"></div>
+    </div>
+
+    <main class="grid" id="grid"></main>
+  </div>
+
+  <dialog id="modal">
+    <form id="link-form">
+      <h3 style="margin-bottom: 14px;" id="modal-title">Adicionar atalho</h3>
+      <input type="hidden" id="field-id" />
+      <div class="form-group">
+        <label for="field-name">Nome</label>
+        <input id="field-name" required placeholder="Ex: Home Assistant" />
+      </div>
+      <div class="form-group">
+        <label for="field-url">URL de destino</label>
+        <input id="field-url" type="url" placeholder="https://..." />
+      </div>
+      <div class="form-group">
+        <label for="field-desc">Descrição</label>
+        <input id="field-desc" placeholder="Ex: Painel principal de automação" />
+      </div>
+      <div class="form-group">
+        <label for="field-cat">Categoria</label>
+        <input id="field-cat" value="Projeto" required />
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn-delete" style="color: var(--danger); margin-right: auto; display: none;">Remover</button>
+        <button type="button" id="btn-cancel">Cancelar</button>
+        <button type="submit" class="primary">Salvar no navegador</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+    const STORAGE_KEY = "painel_comando_custom_links_v1";
+    const FALLBACK_CONFIG = {
+      title: "Matheus Gabriel · Área de Comando",
+      subtitle: "Central de acesso rápido aos serviços do projeto",
+      links: [
+        { id: "aws-console", name: "AWS Console", description: "Painel principal da sua conta AWS", url: "https://console.aws.amazon.com/", category: "Nuvem", icon: "cloud", status: "ready" },
+        { id: "oracle-cloud", name: "Oracle Cloud (OCI)", description: "Instâncias Always Free e rede virtual", url: "https://cloud.oracle.com/", category: "Nuvem", icon: "server", status: "ready" },
+        { id: "home-assistant", name: "Home Assistant", description: "Automação residencial (configure a URL do seu servidor)", url: "", category: "Automação", icon: "home", status: "pending" },
+        { id: "n8n", name: "n8n Automações", description: "Fluxos e webhooks (configure a URL do seu n8n)", url: "", category: "Automação", icon: "workflow", status: "pending" },
+        { id: "github", name: "GitHub", description: "Repositórios e edição deste painel", url: "https://github.com/matheusantunesx123-hub", category: "Código", icon: "code", status: "ready" },
+        { id: "duckdns", name: "DuckDNS", description: "Gerenciar subdomínios dinâmicos gratuitos", url: "https://www.duckdns.org/", category: "Rede", icon: "globe", status: "ready" }
+      ]
+    };
+
+    const ICONS = {
+      cloud: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>`,
+      server: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><circle cx="6" cy="7" r="1"/><circle cx="6" cy="17" r="1"/></svg>`,
+      home: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"/></svg>`,
+      workflow: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M9 6h4a2 2 0 0 1 2 2v7"/></svg>`,
+      code: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>`,
+      globe: `<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>`
+    };
+
+    let baseLinks = [];
+    let activeCategory = "Todas";
+
+    function loadLocalOverrides() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+      } catch {
+        return {};
+      }
+    }
+
+    function saveLocalOverrides(map) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
+    }
+
+    function getMergedLinks() {
+      const overrides = loadLocalOverrides();
+      const map = new Map();
+
+      for (const item of baseLinks) {
+        const override = overrides[item.id];
+        if (override && override._deleted) continue;
+        map.set(item.id, override ? { ...item, ...override, _local: true } : { ...item });
+      }
+      for (const [id, item] of Object.entries(overrides)) {
+        if (!item._deleted && !map.has(id)) {
+          map.set(id, { ...item, id, _local: true });
+        }
+      }
+      return Array.from(map.values());
+    }
+
+    function handleDirectRedirect(links) {
+      const params = new URLSearchParams(window.location.search);
+      const go = params.get("go") || window.location.hash.replace(/^#go=/, "");
+      if (!go) return;
+      const target = links.find((l) => l.id === go && l.url);
+      if (target) {
+        window.location.replace(target.url);
+      }
+    }
+
+    function renderFilters(links) {
+      const categories = ["Todas", ...new Set(links.map((l) => l.category || "Projeto"))];
+      const container = document.getElementById("filters");
+      container.innerHTML = "";
+      for (const cat of categories) {
+        const btn = document.createElement("button");
+        btn.className = `pill ${activeCategory === cat ? "active" : ""}`;
+        btn.textContent = cat;
+        btn.onclick = () => {
+          activeCategory = cat;
+          render();
+        };
+        container.appendChild(btn);
+      }
+    }
+
+    function render() {
+      const links = getMergedLinks();
+      renderFilters(links);
+
+      const q = document.getElementById("search").value.trim().toLowerCase();
+      const filtered = links.filter((item) => {
+        const matchCat = activeCategory === "Todas" || (item.category || "Projeto") === activeCategory;
+        const matchText =
+          !q ||
+          item.name.toLowerCase().includes(q) ||
+          (item.description || "").toLowerCase().includes(q) ||
+          (item.category || "").toLowerCase().includes(q);
+        return matchCat && matchText;
+      });
+
+      const grid = document.getElementById("grid");
+      grid.innerHTML = "";
+
+      if (filtered.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "empty";
+        empty.textContent = "Nenhum serviço encontrado para esse filtro.";
+        grid.appendChild(empty);
+        return;
+      }
+
+      for (const item of filtered) {
+        const hasUrl = Boolean(item.url && item.url.trim());
+        const card = document.createElement("a");
+        card.className = `card ${hasUrl ? "" : "pending"}`;
+        card.href = hasUrl ? item.url : "#";
+        if (hasUrl) {
+          card.target = "_blank";
+          card.rel = "noopener noreferrer";
+        } else {
+          card.onclick = (e) => {
+            e.preventDefault();
+            openModal(item);
+          };
+        }
+
+        const badgeClass = item._local ? "local" : hasUrl ? "ready" : "pending";
+        const badgeLabel = item._local ? "Local" : hasUrl ? "Ativo" : "Configurar URL";
+
+        card.innerHTML = `
+          <div class="card-top">
+            <div class="icon-box">${ICONS[item.icon] || ICONS.globe}</div>
+            <span class="badge ${badgeClass}">${badgeLabel}</span>
+          </div>
+          <div>
+            <h2>${escapeHtml(item.name)}</h2>
+            <p>${escapeHtml(item.description || "")}</p>
+          </div>
+          <div class="card-footer">
+            <span class="url-preview">${escapeHtml(hasUrl ? item.url : "Clique para definir URL")}</span>
+            <div class="card-actions">
+              <button type="button" class="mini-btn edit-trigger">Editar</button>
+            </div>
+          </div>
+        `;
+
+        card.querySelector(".edit-trigger").onclick = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openModal(item);
+        };
+
+        grid.appendChild(card);
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[c]));
+    }
+
+    const modal = document.getElementById("modal");
+    const form = document.getElementById("link-form");
+
+    function openModal(item = null) {
+      document.getElementById("modal-title").textContent = item ? `Editar: ${item.name}` : "Novo atalho";
+      document.getElementById("field-id").value = item ? item.id : "";
+      document.getElementById("field-name").value = item ? item.name : "";
+      document.getElementById("field-url").value = item ? item.url || "" : "";
+      document.getElementById("field-desc").value = item ? item.description || "" : "";
+      document.getElementById("field-cat").value = item ? item.category || "Projeto" : "Projeto";
+      document.getElementById("btn-delete").style.display = item ? "inline-block" : "none";
+      modal.showModal();
+    }
+
+    document.getElementById("btn-add").onclick = () => openModal(null);
+    document.getElementById("btn-cancel").onclick = () => modal.close();
+
+    document.getElementById("btn-delete").onclick = () => {
+      const id = document.getElementById("field-id").value;
+      if (!id) return;
+      const overrides = loadLocalOverrides();
+      overrides[id] = { _deleted: true };
+      saveLocalOverrides(overrides);
+      modal.close();
+      render();
+    };
+
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      const rawId = document.getElementById("field-id").value;
+      const name = document.getElementById("field-name").value.trim();
+      const id = rawId || name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || `link-${Date.now()}`;
+      const overrides = loadLocalOverrides();
+      overrides[id] = {
+        id,
+        name,
+        url: document.getElementById("field-url").value.trim(),
+        description: document.getElementById("field-desc").value.trim(),
+        category: document.getElementById("field-cat").value.trim() || "Projeto",
+        icon: "globe"
+      };
+      saveLocalOverrides(overrides);
+      modal.close();
+      render();
+    };
+
+    document.getElementById("btn-export").onclick = () => {
+      const payload = {
+        title: document.getElementById("page-title").textContent,
+        subtitle: document.getElementById("page-subtitle").textContent,
+        links: getMergedLinks().map(({ _local, ...rest }) => rest)
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "links.json";
+      a.click();
+    };
+
+    document.getElementById("search").addEventListener("input", render);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "/" && document.activeElement.tagName !== "INPUT" && !modal.open) {
+        e.preventDefault();
+        document.getElementById("search").focus();
+      }
+    });
+
+    async function init() {
+      let config = FALLBACK_CONFIG;
+      try {
+        const res = await fetch("./links.json", { cache: "no-store" });
+        if (res.ok) config = await res.json();
+      } catch {
+        // Fallback em abertura local via file://
+      }
+      document.getElementById("page-title").textContent = config.title || FALLBACK_CONFIG.title;
+      document.getElementById("page-subtitle").textContent = config.subtitle || FALLBACK_CONFIG.subtitle;
+      baseLinks = config.links || [];
+      handleDirectRedirect(getMergedLinks());
+      render();
+    }
+
+    init();
+  </script>
+</body>
+</html>
