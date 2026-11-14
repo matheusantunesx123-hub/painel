@@ -1,10 +1,19 @@
 {
   "title": "Projeto Snake · Área de Comando",
-  "subtitle": "Central unificada de automação: Oracle Cloud, Home Assistant, ESP32 e Alexa",
+  "subtitle": "Central unificada de automação: Cloudflare Edge, Oracle Cloud, Home Assistant, ESP32 e Alexa",
   "links": [
     {
+      "id": "snake-cloudflare",
+      "name": "Snake Cloudflare Hub",
+      "description": "Borda global Cloudflare: Banco de Dados D1 SQL, Armazenamento KV, Worker Serverless e CDN Always Free",
+      "url": "https://projeto-snake-cloudflare.pages.dev/",
+      "category": "Servidores",
+      "icon": "cloud",
+      "status": "ready"
+    },
+    {
       "id": "painel-oracle",
-      "name": "Painel do Servidor Oracle",
+      "name": "Painel Servidor Oracle",
       "description": "Central de telemetria em tempo real (RAM, CPU, ZRAM, Disco), controle de processos PM2 e status dos bots",
       "url": "https://157-151-15-149.sslip.io/",
       "category": "Servidores",
@@ -14,7 +23,7 @@
     {
       "id": "home-assistant",
       "name": "Home Assistant",
-      "description": "Painel central de automação residencial, dashboards, sensores Zigbee/Wi-Fi e integração Alexa",
+      "description": "Painel central de automação residencial, dashboards, sensores Zigbee e Wi-Fi e integração Alexa",
       "url": "https://ha.157-151-15-149.sslip.io/",
       "category": "Automação",
       "icon": "home",
@@ -22,16 +31,16 @@
     },
     {
       "id": "n8n",
-      "name": "n8n Automações (Túnel SSH)",
-      "description": "Fluxos de automação via webhooks HTTPS; editor acessível com segurança via túnel SSH (ABRIR_N8N.bat)",
+      "name": "N8N Automações",
+      "description": "Fluxos de automação via webhooks HTTPS e editor seguro via túnel SSH",
       "url": "https://n8n.157-151-15-149.sslip.io/",
       "category": "Automação",
       "icon": "workflow",
-      "status": "planned"
+      "status": "ready"
     },
     {
       "id": "omniroute",
-      "name": "OmniRoute (IA)",
+      "name": "OmniRoute IA",
       "description": "Roteador e gateway de modelos LLM, agentes inteligentes e endpoints de inteligência artificial",
       "url": "https://ai.157-151-15-149.sslip.io/",
       "category": "IA",
@@ -40,8 +49,8 @@
     },
     {
       "id": "email-classifier",
-      "name": "Classificador de E-mails (IA)",
-      "description": "Painel protegido de categorias, regras de triagem e inteligência artificial para o Gmail",
+      "name": "Classificador de Emails IA",
+      "description": "Painel de triagem automática, categorias e inteligência artificial para o Gmail",
       "url": "https://email.157-151-15-149.sslip.io/",
       "category": "IA",
       "icon": "workflow",
@@ -49,8 +58,8 @@
     },
     {
       "id": "esphome",
-      "name": "ESPHome Dashboard (Túnel SSH)",
-      "description": "Compilação e gravação OTA de ESP32/ESP8266; protegido localmente via túnel SSH (ABRIR_ESPHOME.bat)",
+      "name": "ESPHome Dashboard",
+      "description": "Compilação e gravação OTA de ESP32 e ESP8266 protegido localmente via túnel SSH",
       "url": "http://localhost:2027/",
       "category": "Dispositivos",
       "icon": "chip",
@@ -58,8 +67,8 @@
     },
     {
       "id": "central-iot",
-      "name": "Central IoT & Telemetria",
-      "description": "Interface web protegida de monitoramento e telemetria dos dispositivos IoT, sensores e relés",
+      "name": "Central IoT e Telemetria",
+      "description": "Interface web de monitoramento e telemetria dos dispositivos IoT, sensores e relés",
       "url": "https://iot.157-151-15-149.sslip.io/",
       "category": "Dispositivos",
       "icon": "wifi",
@@ -67,7 +76,7 @@
     },
     {
       "id": "api-rede",
-      "name": "OmniNet (Controle de Rede)",
+      "name": "OmniNet Controle de Rede",
       "description": "Gestão multi-redes, roteadores integrados ou avulsos, ping seguro e auditoria de portas",
       "url": "https://rede.157-151-15-149.sslip.io/",
       "category": "Dispositivos",
@@ -76,7 +85,7 @@
     },
     {
       "id": "aws-lambda-alexa",
-      "name": "AWS Lambda (Alexa HA)",
+      "name": "AWS Lambda Alexa",
       "description": "Função serverless HomeAssistantAlexa que conecta o Home Assistant à skill Alexa Smart Home",
       "url": "https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions/HomeAssistantAlexa",
       "category": "Automação",
@@ -85,7 +94,7 @@
     },
     {
       "id": "oracle-cloud",
-      "name": "Oracle Cloud (Console OCI)",
+      "name": "Oracle Cloud Console",
       "description": "Console oficial de gerenciamento da infraestrutura Always Free na nuvem Oracle",
       "url": "https://cloud.oracle.com/",
       "category": "Servidores",
@@ -95,7 +104,7 @@
     {
       "id": "aws-console",
       "name": "AWS Console",
-      "description": "Painel de administração da conta AWS e serviços em nuvem (cli-admin)",
+      "description": "Painel de administração da conta AWS e serviços em nuvem",
       "url": "https://console.aws.amazon.com/",
       "category": "Servidores",
       "icon": "cloud",
@@ -103,7 +112,7 @@
     },
     {
       "id": "duckdns",
-      "name": "DuckDNS",
+      "name": "DuckDNS Domínios",
       "description": "Gerenciamento de DNS dinâmico e subdomínios gratuitos para os servidores",
       "url": "https://www.duckdns.org/",
       "category": "Servidores",
@@ -112,7 +121,7 @@
     },
     {
       "id": "site-progweb-2026",
-      "name": "Site Pessoal (ProgWeb 2026)",
+      "name": "Site Pessoal ProgWeb 2026",
       "description": "Projeto e website acadêmico de Programação Web hospedado com GitHub Pages",
       "url": "https://matheusantunesx123-hub.github.io/Site-Pessoal-ProgWeb-2026/",
       "category": "Projetos",
@@ -130,7 +139,7 @@
     },
     {
       "id": "github-painel",
-      "name": "GitHub (Repositório Painel)",
+      "name": "GitHub Repositório Painel",
       "description": "Código-fonte, controle de versão e configurações desta Área de Comando",
       "url": "https://github.com/matheusantunesx123-hub/painel",
       "category": "Código",
@@ -139,7 +148,7 @@
     },
     {
       "id": "github-perfil",
-      "name": "GitHub (Perfil Completo)",
+      "name": "GitHub Perfil Completo",
       "description": "Perfil com todos os repositórios, projetos abertos e privados no GitHub",
       "url": "https://github.com/matheusantunesx123-hub",
       "category": "Código",
