@@ -1,6 +1,6 @@
 {
-  "title": "Matheus Gabriel Â· Ãrea de Comando",
-  "subtitle": "Central Ãºnica de acesso a todos os projetos, automaÃ§Ãµes e servidores em nuvem",
+  "title": "Projeto Snake · Área de Comando",
+  "subtitle": "Central unificada de automação: Oracle Cloud, Home Assistant, ESP32 e Alexa",
   "links": [
     {
       "id": "painel-oracle",
@@ -14,25 +14,25 @@
     {
       "id": "home-assistant",
       "name": "Home Assistant",
-      "description": "Painel central de automaÃ§Ã£o residencial, dashboards, sensores Zigbee/Wi-Fi e integraÃ§Ã£o Alexa",
+      "description": "Painel central de automação residencial, dashboards, sensores Zigbee/Wi-Fi e integração Alexa",
       "url": "https://ha.157-151-15-149.sslip.io/",
-      "category": "AutomaÃ§Ã£o",
+      "category": "Automação",
       "icon": "home",
       "status": "ready"
     },
     {
       "id": "n8n",
-      "name": "n8n AutomaÃ§Ãµes (TÃºnel SSH)",
-      "description": "Fluxos de automaÃ§Ã£o via webhooks HTTPS; editor acessÃ­vel com seguranÃ§a via tÃºnel SSH (ABRIR_N8N.bat)",
+      "name": "n8n Automações (Túnel SSH)",
+      "description": "Fluxos de automação via webhooks HTTPS; editor acessível com segurança via túnel SSH (ABRIR_N8N.bat)",
       "url": "https://n8n.157-151-15-149.sslip.io/",
-      "category": "AutomaÃ§Ã£o",
+      "category": "Automação",
       "icon": "workflow",
       "status": "planned"
     },
     {
       "id": "omniroute",
       "name": "OmniRoute (IA)",
-      "description": "Roteador e gateway de modelos LLM, agentes inteligentes e endpoints de inteligÃªncia artificial",
+      "description": "Roteador e gateway de modelos LLM, agentes inteligentes e endpoints de inteligência artificial",
       "url": "https://ai.157-151-15-149.sslip.io/",
       "category": "IA",
       "icon": "brain",
@@ -41,7 +41,7 @@
     {
       "id": "email-classifier",
       "name": "Classificador de E-mails (IA)",
-      "description": "Painel protegido de categorias, regras de triagem e inteligÃªncia artificial para o Gmail",
+      "description": "Painel protegido de categorias, regras de triagem e inteligência artificial para o Gmail",
       "url": "https://email.157-151-15-149.sslip.io/",
       "category": "IA",
       "icon": "workflow",
@@ -49,8 +49,8 @@
     },
     {
       "id": "esphome",
-      "name": "ESPHome Dashboard (TÃºnel SSH)",
-      "description": "CompilaÃ§Ã£o e gravaÃ§Ã£o OTA de ESP32/ESP8266; protegido localmente via tÃºnel SSH (ABRIR_ESPHOME.bat)",
+      "name": "ESPHome Dashboard (Túnel SSH)",
+      "description": "Compilação e gravação OTA de ESP32/ESP8266; protegido localmente via túnel SSH (ABRIR_ESPHOME.bat)",
       "url": "http://localhost:2027/",
       "category": "Dispositivos",
       "icon": "chip",
@@ -59,7 +59,7 @@
     {
       "id": "central-iot",
       "name": "Central IoT & Telemetria",
-      "description": "Interface web protegida de monitoramento e telemetria dos dispositivos IoT, sensores e relÃ©s",
+      "description": "Interface web protegida de monitoramento e telemetria dos dispositivos IoT, sensores e relés",
       "url": "https://iot.157-151-15-149.sslip.io/",
       "category": "Dispositivos",
       "icon": "wifi",
@@ -68,7 +68,7 @@
     {
       "id": "api-rede",
       "name": "OmniNet (Controle de Rede)",
-      "description": "GestÃ£o multi-redes, roteadores integrados ou avulsos, ping seguro e auditoria de portas",
+      "description": "Gestão multi-redes, roteadores integrados ou avulsos, ping seguro e auditoria de portas",
       "url": "https://rede.157-151-15-149.sslip.io/",
       "category": "Dispositivos",
       "icon": "wifi",
@@ -77,9 +77,9 @@
     {
       "id": "aws-lambda-alexa",
       "name": "AWS Lambda (Alexa HA)",
-      "description": "FunÃ§Ã£o serverless HomeAssistantAlexa que conecta o Home Assistant Ã  skill Alexa Smart Home",
+      "description": "Função serverless HomeAssistantAlexa que conecta o Home Assistant à skill Alexa Smart Home",
       "url": "https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions/HomeAssistantAlexa",
-      "category": "AutomaÃ§Ã£o",
+      "category": "Automação",
       "icon": "cloud",
       "status": "ready"
     },
@@ -95,7 +95,7 @@
     {
       "id": "aws-console",
       "name": "AWS Console",
-      "description": "Painel de administraÃ§Ã£o da conta AWS e serviÃ§os em nuvem (cli-admin)",
+      "description": "Painel de administração da conta AWS e serviços em nuvem (cli-admin)",
       "url": "https://console.aws.amazon.com/",
       "category": "Servidores",
       "icon": "cloud",
@@ -104,7 +104,7 @@
     {
       "id": "duckdns",
       "name": "DuckDNS",
-      "description": "Gerenciamento de DNS dinÃ¢mico e subdomÃ­nios gratuitos para os servidores",
+      "description": "Gerenciamento de DNS dinâmico e subdomínios gratuitos para os servidores",
       "url": "https://www.duckdns.org/",
       "category": "Servidores",
       "icon": "globe",
@@ -113,7 +113,7 @@
     {
       "id": "site-progweb-2026",
       "name": "Site Pessoal (ProgWeb 2026)",
-      "description": "Projeto e website acadÃªmico de ProgramaÃ§Ã£o Web hospedado com GitHub Pages",
+      "description": "Projeto e website acadêmico de Programação Web hospedado com GitHub Pages",
       "url": "https://matheusantunesx123-hub.github.io/Site-Pessoal-ProgWeb-2026/",
       "category": "Projetos",
       "icon": "globe",
@@ -121,8 +121,8 @@
     },
     {
       "id": "site-pessoal",
-      "name": "Site Pessoal PortfÃ³lio",
-      "description": "Website pessoal e portfÃ³lio profissional hospedado no GitHub Pages",
+      "name": "Site Pessoal Portfólio",
+      "description": "Website pessoal e portfólio profissional hospedado no GitHub Pages",
       "url": "https://matheusantunesx123-hub.github.io/Site-Pessoal/",
       "category": "Projetos",
       "icon": "globe",
@@ -130,19 +130,19 @@
     },
     {
       "id": "github-painel",
-      "name": "GitHub (RepositÃ³rio Painel)",
-      "description": "CÃ³digo-fonte, controle de versÃ£o e configuraÃ§Ãµes desta Ãrea de Comando",
+      "name": "GitHub (Repositório Painel)",
+      "description": "Código-fonte, controle de versão e configurações desta Área de Comando",
       "url": "https://github.com/matheusantunesx123-hub/painel",
-      "category": "CÃ³digo",
+      "category": "Código",
       "icon": "code",
       "status": "ready"
     },
     {
       "id": "github-perfil",
       "name": "GitHub (Perfil Completo)",
-      "description": "Perfil com todos os repositÃ³rios, projetos abertos e privados no GitHub",
+      "description": "Perfil com todos os repositórios, projetos abertos e privados no GitHub",
       "url": "https://github.com/matheusantunesx123-hub",
-      "category": "CÃ³digo",
+      "category": "Código",
       "icon": "code",
       "status": "ready"
     }
