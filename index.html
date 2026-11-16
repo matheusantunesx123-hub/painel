@@ -653,6 +653,7 @@
           </div>
         </div>
         <div class="header-actions">
+          <a class="btn" href="https://157-151-15-149.sslip.io/passkeys" target="_blank" rel="noopener noreferrer" style="text-decoration:none;" title="Cadastrar ou gerenciar digital (Windows Hello / Passkey)">👆 Digital</a>
           <button class="primary" id="btn-add" title="Adicionar atalho">+ Atalho</button>
           <button class="icon-only" id="btn-export" title="Exportar links.json">
             <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -836,6 +837,7 @@
           !q ||
           item.name.toLowerCase().includes(q) ||
           (item.description || "").toLowerCase().includes(q) ||
+          (item.url || "").toLowerCase().includes(q) ||
           (item.category || "").toLowerCase().includes(q);
         return matchCat && matchText;
       });
