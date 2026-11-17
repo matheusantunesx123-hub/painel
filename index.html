@@ -766,7 +766,323 @@
       external: `<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>`
     };
 
-    let baseLinks = [];
+    let baseLinks = [
+  {
+    "id": "painel-oracle",
+    "name": "Painel Servidor Oracle",
+    "description": "Central de telemetria em tempo real (RAM, CPU, ZRAM, Disco), controle de processos PM2 e status dos bots",
+    "url": "https://157-151-15-149.sslip.io/",
+    "category": "Servidores",
+    "icon": "server",
+    "status": "ready"
+  },
+  {
+    "id": "passkeys-oracle",
+    "name": "Biometria & Digital (Passkeys)",
+    "description": "Cadastre a digital do notebook ou celular (Windows Hello / Android) para entrar em todos os painéis Oracle sem digitar senha",
+    "url": "https://157-151-15-149.sslip.io/passkeys",
+    "category": "Servidores",
+    "icon": "server",
+    "status": "ready"
+  },
+  {
+    "id": "snake-cloudflare",
+    "name": "Snake Cloudflare Hub",
+    "description": "Borda global Cloudflare: Banco de Dados D1 SQL, Armazenamento KV, Worker Serverless e CDN Always Free",
+    "url": "https://projeto-snake-cloudflare.pages.dev/",
+    "category": "Servidores",
+    "icon": "cloud",
+    "status": "ready"
+  },
+  {
+    "id": "home-assistant",
+    "name": "Home Assistant",
+    "description": "Painel central de automação residencial, dashboards Lovelace, sensores Zigbee e Wi-Fi e integração Alexa",
+    "url": "https://ha.157-151-15-149.sslip.io/",
+    "category": "Automação",
+    "icon": "home",
+    "status": "ready"
+  },
+  {
+    "id": "central-iot",
+    "name": "Central IoT e Telemetria",
+    "description": "Broker MQTT e interface web de monitoramento em tempo real dos dispositivos IoT, sensores, ESP32 e RF 433MHz",
+    "url": "https://iot.157-151-15-149.sslip.io/",
+    "category": "Dispositivos",
+    "icon": "wifi",
+    "status": "ready"
+  },
+  {
+    "id": "api-rede",
+    "name": "OmniNet Controle de Rede",
+    "description": "Gestão multi-redes, roteadores locais ou em nuvem, ping seguro, radar L2/L3 e OpenL2M",
+    "url": "https://rede.157-151-15-149.sslip.io/",
+    "category": "Dispositivos",
+    "icon": "wifi",
+    "status": "ready"
+  },
+  {
+    "id": "antigravity-chat",
+    "name": "Antigravity Chat Web",
+    "description": "Interface web protegida com IA e acesso às 72+ conversas, documentos Markdown e projetos da VPS Oracle",
+    "url": "https://chat.157-151-15-149.sslip.io/",
+    "category": "IA",
+    "icon": "brain",
+    "status": "ready"
+  },
+  {
+    "id": "omniroute",
+    "name": "OmniRoute IA Gateway",
+    "description": "Roteador multi-modelos LLM, cotas gratuitas combinadas e endpoint compatível OpenAI/Gemini",
+    "url": "https://ai.157-151-15-149.sslip.io/",
+    "category": "IA",
+    "icon": "brain",
+    "status": "ready"
+  },
+  {
+    "id": "email-classifier",
+    "name": "Classificador de Emails IA",
+    "description": "Painel de triagem automática, categorias, detecção anti-fraude e inteligência artificial para o Gmail",
+    "url": "https://email.157-151-15-149.sslip.io/",
+    "category": "IA",
+    "icon": "workflow",
+    "status": "ready"
+  },
+  {
+    "id": "email-classifier-gas",
+    "name": "Email Classifier WebApp (GAS)",
+    "description": "Web App do Google Apps Script que lê o Gmail e sincroniza triagem com a VPS Oracle",
+    "url": "https://script.google.com/macros/s/AKfycbxLUtQlPjAKFnl3j04XMwhnXPKLOHRUBvGRuy_yCgn_w_BP_IjwuFycsPlV3yurZKW6/exec",
+    "category": "Automação",
+    "icon": "workflow",
+    "status": "ready"
+  },
+  {
+    "id": "jarvis-voice",
+    "name": "Jarvis & Leo Voice API",
+    "description": "Assistente de voz residencial (Python/aiohttp + Edge TTS) para Mi Box e comandos na TV da sala",
+    "url": "https://voice.157-151-15-149.sslip.io/",
+    "category": "IA",
+    "icon": "brain",
+    "status": "ready"
+  },
+  {
+    "id": "servidor-mibox",
+    "name": "Servidor Mi Box (Mixbox)",
+    "description": "Servidor local na sala (192.168.0.17): gateway de áudio e voz humana na TV/som via ADB/SSH, integrado ao Jarvis Voice e Home Assistant",
+    "url": "https://voice.157-151-15-149.sslip.io/",
+    "category": "Dispositivos",
+    "icon": "chip",
+    "status": "ready"
+  },
+  {
+    "id": "bot-cloud-agent",
+    "name": "Bot Cloud Agent (@Aliexpress20_Bot)",
+    "description": "Agente DevOps autônomo na VPS Oracle conectado ao Antigravity via MCP e ao Telegram com OmniRoute e Gemini",
+    "url": "https://t.me/Aliexpress20_Bot",
+    "category": "IA",
+    "icon": "brain",
+    "status": "ready"
+  },
+  {
+    "id": "bot-gastos-telegram",
+    "name": "Bot Gastos Financeiro (Cloudflare Worker)",
+    "description": "Bot @OrgfinanceiraBot + API serverless em Cloudflare Workers com banco D1 SQL para controle de gastos e metas",
+    "url": "https://bot-gastos-telegram.bot-gastos-telegram.workers.dev/",
+    "category": "Automação",
+    "icon": "cloud",
+    "status": "ready"
+  },
+  {
+    "id": "bot-fatura-nubank",
+    "name": "Bot Fatura Nubank (Painel SQLite)",
+    "description": "Conciliação de gastos compartilhados do cartão Nubank via WhatsApp/OCR com edição em tempo real no Painel Oracle",
+    "url": "https://157-151-15-149.sslip.io/#faturaSection",
+    "category": "Automação",
+    "icon": "workflow",
+    "status": "ready"
+  },
+  {
+    "id": "n8n",
+    "name": "N8N Automações",
+    "description": "Fluxos de automação via webhooks HTTPS (editor protegido localmente via túnel SSH)",
+    "url": "https://n8n.157-151-15-149.sslip.io/",
+    "category": "Automação",
+    "icon": "workflow",
+    "status": "ready"
+  },
+  {
+    "id": "central-hub-gas",
+    "name": "CentralHub (Google Apps Script)",
+    "description": "Hub pessoal hospedado no Google Apps Script integrado à conta Google e planilhas/scripts",
+    "url": "https://script.google.com/macros/s/AKfycbzvEAuGF7iB8pgV1yJTht5lGTVzKl41nkXi8fC0z6nX8lF1KVVfpF2W79Gj1guhKb1z9A/exec",
+    "category": "Automação",
+    "icon": "cloud",
+    "status": "ready"
+  },
+  {
+    "id": "tuya-auto-renew",
+    "name": "Tuya Developer Platform (Auto-Renew)",
+    "description": "Console IoT da Tuya Cloud com renovação periódica automatizada pelo daemon na VPS Oracle",
+    "url": "https://platform.tuya.com/",
+    "category": "Automação",
+    "icon": "workflow",
+    "status": "ready"
+  },
+  {
+    "id": "esphome",
+    "name": "ESPHome Dashboard",
+    "description": "Compilação e gravação OTA de microcontroladores ESP32 e ESP8266 protegido via túnel SSH (porta 2027)",
+    "url": "http://localhost:2027/",
+    "category": "Dispositivos",
+    "icon": "chip",
+    "status": "ready"
+  },
+  {
+    "id": "esp-lab-3d",
+    "name": "ESP32 & Módulos 3D Lab Studio",
+    "description": "Laboratório Web 3D interativo (Three.js) com pinout 1:1 fiel, fiação pino a pino e modo ensinar a montar",
+    "url": "https://matheusantunesx123-hub.github.io/esp32-3d-lab/",
+    "category": "Projetos",
+    "icon": "chip",
+    "status": "ready"
+  },
+  {
+    "id": "simulador-central-esp32",
+    "name": "Simulador Wokwi · Central ESP32 RF",
+    "description": "Circuito e firmware em tempo real: receptor RF 433MHz, display OLED, relé e pareamento Tuya",
+    "url": "https://wokwi.com/projects/new/esp32",
+    "category": "Dispositivos",
+    "icon": "chip",
+    "status": "ready"
+  },
+  {
+    "id": "simulador-arduino-esp01",
+    "name": "Simulador Wokwi · Nó Arduino Uno + ESP-01",
+    "description": "Nó sensor do cômodo: Arduino Uno R3 lendo DHT22, presença PIR e botão, transmitindo via ESP-01 (8 pinos)",
+    "url": "https://wokwi.com/projects/new/arduino-uno",
+    "category": "Dispositivos",
+    "icon": "chip",
+    "status": "ready"
+  },
+  {
+    "id": "busca-ampere-24gb",
+    "name": "Sentinela Ampere 24GB Always Free",
+    "description": "Daemon 24/7 na Oracle Cloud buscando instância ARM Ampere A1 (4 OCPUs / 24 GB RAM) gratuita",
+    "url": "https://157-151-15-149.sslip.io/#cloudExtrasSection",
+    "category": "Servidores",
+    "icon": "server",
+    "status": "ready"
+  },
+  {
+    "id": "cloudflare-dashboard",
+    "name": "Cloudflare Dashboard (Edge)",
+    "description": "Painel Cloudflare: Workers, Pages, bancos D1, KV e DNS do ecossistema Projeto Snake",
+    "url": "https://dash.cloudflare.com/",
+    "category": "Servidores",
+    "icon": "cloud",
+    "status": "ready"
+  },
+  {
+    "id": "oracle-cloud",
+    "name": "Oracle Cloud Console",
+    "description": "Console oficial de gerenciamento da infraestrutura Always Free na nuvem Oracle (Vinhedo)",
+    "url": "https://cloud.oracle.com/",
+    "category": "Servidores",
+    "icon": "server",
+    "status": "ready"
+  },
+  {
+    "id": "aws-lambda-alexa",
+    "name": "AWS Lambda Alexa",
+    "description": "Função serverless HomeAssistantAlexa que conecta o Home Assistant à skill Alexa Smart Home",
+    "url": "https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions/HomeAssistantAlexa",
+    "category": "Automação",
+    "icon": "cloud",
+    "status": "ready"
+  },
+  {
+    "id": "aws-console",
+    "name": "AWS Console",
+    "description": "Painel de administração da conta AWS e serviços em nuvem",
+    "url": "https://console.aws.amazon.com/",
+    "category": "Servidores",
+    "icon": "cloud",
+    "status": "ready"
+  },
+  {
+    "id": "duckdns",
+    "name": "DuckDNS Domínios",
+    "description": "Gerenciamento de DNS dinâmico e subdomínios gratuitos para os servidores",
+    "url": "https://www.duckdns.org/",
+    "category": "Servidores",
+    "icon": "globe",
+    "status": "ready"
+  },
+  {
+    "id": "site-progweb-2026",
+    "name": "Site Pessoal ProgWeb 2026",
+    "description": "Projeto web pessoal e acadêmico de Programação Web hospedado no GitHub Pages",
+    "url": "https://matheusantunesx123-hub.github.io/Site-Pessoal-ProgWeb-2026/",
+    "category": "Projetos",
+    "icon": "globe",
+    "status": "ready"
+  },
+  {
+    "id": "site-pessoal",
+    "name": "Site Pessoal Portfólio",
+    "description": "Website pessoal e portfólio profissional hospedado no GitHub Pages",
+    "url": "https://matheusantunesx123-hub.github.io/Site-Pessoal/",
+    "category": "Projetos",
+    "icon": "globe",
+    "status": "ready"
+  },
+  {
+    "id": "ifeventos",
+    "name": "IF Eventos (IF Sudeste MG)",
+    "description": "Sistema web de eventos acadêmicos e inscrições do campus",
+    "url": "https://ifeventos.lucianovilasboas.com.br/eventos/",
+    "category": "Projetos",
+    "icon": "globe",
+    "status": "ready"
+  },
+  {
+    "id": "github-painel",
+    "name": "GitHub Repositório Painel",
+    "description": "Código-fonte, links e versionamento desta Área de Comando",
+    "url": "https://github.com/matheusantunesx123-hub/painel",
+    "category": "Código",
+    "icon": "code",
+    "status": "ready"
+  },
+  {
+    "id": "github-esp32-lab",
+    "name": "GitHub ESP32 3D Lab",
+    "description": "Código-fonte do laboratório interativo 3D de placas ESP32, sensores e relés",
+    "url": "https://github.com/matheusantunesx123-hub/esp32-3d-lab",
+    "category": "Código",
+    "icon": "code",
+    "status": "ready"
+  },
+  {
+    "id": "github-fotos-telegram",
+    "name": "GitHub Fotos → Telegram",
+    "description": "Automação Python via GitHub Actions para envio e backup de mídia no Telegram (repositório privado)",
+    "url": "https://github.com/matheusantunesx123-hub/fotos-telegram",
+    "category": "Código",
+    "icon": "code",
+    "status": "ready"
+  },
+  {
+    "id": "github-perfil",
+    "name": "GitHub Perfil Completo",
+    "description": "Perfil com todos os repositórios, projetos abertos e privados no GitHub",
+    "url": "https://github.com/matheusantunesx123-hub",
+    "category": "Código",
+    "icon": "code",
+    "status": "ready"
+  }
+];
     let activeCategory = "Todas";
 
     function loadLocalOverrides() {
