@@ -102,6 +102,15 @@
       "status": "ready"
     },
     {
+      "id": "servidor-mibox",
+      "name": "Servidor Mi Box (Mixbox)",
+      "description": "Servidor local na sala (192.168.0.17): gateway de áudio e voz humana na TV/som via ADB/SSH, integrado ao Jarvis Voice e Home Assistant",
+      "url": "https://voice.157-151-15-149.sslip.io/",
+      "category": "Dispositivos",
+      "icon": "chip",
+      "status": "ready"
+    },
+    {
       "id": "bot-cloud-agent",
       "name": "Bot Cloud Agent (@Aliexpress20_Bot)",
       "description": "Agente DevOps autônomo na VPS Oracle conectado ao Antigravity via MCP e ao Telegram com OmniRoute e Gemini",
