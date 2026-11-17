@@ -5,17 +5,8 @@
     {
       "id": "painel-oracle",
       "name": "Painel Servidor Oracle",
-      "description": "Central de telemetria em tempo real (RAM, CPU, ZRAM, Disco), controle de processos PM2 e status dos bots",
+      "description": "Central de telemetria em tempo real (RAM, CPU, ZRAM, Disco), controle PM2, autenticação biométrica Passkeys e Sentinela Ampere 24GB",
       "url": "https://157-151-15-149.sslip.io/",
-      "category": "Servidores",
-      "icon": "server",
-      "status": "ready"
-    },
-    {
-      "id": "passkeys-oracle",
-      "name": "Biometria & Digital (Passkeys)",
-      "description": "Cadastre a digital do notebook ou celular (Windows Hello / Android) para entrar em todos os painéis Oracle sem digitar senha",
-      "url": "https://157-151-15-149.sslip.io/passkeys",
       "category": "Servidores",
       "icon": "server",
       "status": "ready"
@@ -84,30 +75,12 @@
       "status": "ready"
     },
     {
-      "id": "email-classifier-gas",
-      "name": "Email Classifier WebApp (GAS)",
-      "description": "Web App do Google Apps Script que lê o Gmail e sincroniza triagem com a VPS Oracle",
-      "url": "https://script.google.com/macros/s/AKfycbxLUtQlPjAKFnl3j04XMwhnXPKLOHRUBvGRuy_yCgn_w_BP_IjwuFycsPlV3yurZKW6/exec",
-      "category": "Automação",
-      "icon": "workflow",
-      "status": "ready"
-    },
-    {
       "id": "jarvis-voice",
-      "name": "Jarvis & Leo Voice API",
-      "description": "Assistente de voz residencial (Python/aiohttp + Edge TTS) para Mi Box e comandos na TV da sala",
+      "name": "Jarvis Voice & Mi Box (Mixbox)",
+      "description": "Assistente inteligente de voz residencial com síntese neural, integrado ao hardware da Mi Box na sala (192.168.0.17), Home Assistant e Gemini na Oracle Cloud",
       "url": "https://voice.157-151-15-149.sslip.io/",
       "category": "IA",
       "icon": "brain",
-      "status": "ready"
-    },
-    {
-      "id": "servidor-mibox",
-      "name": "Servidor Mi Box (Mixbox)",
-      "description": "Servidor local na sala (192.168.0.17): gateway de áudio e voz humana na TV/som via ADB/SSH, integrado ao Jarvis Voice e Home Assistant",
-      "url": "https://voice.157-151-15-149.sslip.io/",
-      "category": "Dispositivos",
-      "icon": "chip",
       "status": "ready"
     },
     {
@@ -144,15 +117,6 @@
       "url": "https://n8n.157-151-15-149.sslip.io/",
       "category": "Automação",
       "icon": "workflow",
-      "status": "ready"
-    },
-    {
-      "id": "central-hub-gas",
-      "name": "CentralHub (Google Apps Script)",
-      "description": "Hub pessoal hospedado no Google Apps Script integrado à conta Google e planilhas/scripts",
-      "url": "https://script.google.com/macros/s/AKfycbzvEAuGF7iB8pgV1yJTht5lGTVzKl41nkXi8fC0z6nX8lF1KVVfpF2W79Gj1guhKb1z9A/exec",
-      "category": "Automação",
-      "icon": "cloud",
       "status": "ready"
     },
     {
@@ -198,15 +162,6 @@
       "url": "https://wokwi.com/projects/new/arduino-uno",
       "category": "Dispositivos",
       "icon": "chip",
-      "status": "ready"
-    },
-    {
-      "id": "busca-ampere-24gb",
-      "name": "Sentinela Ampere 24GB Always Free",
-      "description": "Daemon 24/7 na Oracle Cloud buscando instância ARM Ampere A1 (4 OCPUs / 24 GB RAM) gratuita",
-      "url": "https://157-151-15-149.sslip.io/#cloudExtrasSection",
-      "category": "Servidores",
-      "icon": "server",
       "status": "ready"
     },
     {
