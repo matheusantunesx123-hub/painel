@@ -12,7 +12,7 @@ Atalho central unificado para todos os serviços na nuvem Oracle Always Free, Cl
 
 | Serviço | Função | Link Direto |
 | :--- | :--- | :--- |
-| **Área de Comando Central** | Hub unificado com todos os 34 atalhos e filtros | [Abrir Painel](https://matheusantunesx123-hub.github.io/painel/) |
+| **Área de Comando Central** | Hub unificado com todos os 30 atalhos consolidados e filtros | [Abrir Painel](https://matheusantunesx123-hub.github.io/painel/) |
 | **Painel Servidor Oracle** | Telemetria (CPU, RAM, ZRAM, Disco), PM2 e Fatura Nubank | [Abrir Oracle](https://157-151-15-149.sslip.io/) |
 | **Gestor de Digital (WebAuthn)** | Cadastrar e gerenciar digitais dos seus dispositivos | [Abrir Biometria](https://157-151-15-149.sslip.io/passkeys) |
 | **Snake Cloudflare Hub** | Borda global Cloudflare Pages (D1 SQL, KV e Workers) | [Abrir Cloudflare Hub](https://projeto-snake-cloudflare.pages.dev/) |
@@ -22,7 +22,7 @@ Atalho central unificado para todos os serviços na nuvem Oracle Always Free, Cl
 | **Antigravity Chat Web** | Interface protegida com IA + memória completa de conversas | [Abrir Chat Web](https://chat.157-151-15-149.sslip.io/) |
 | **OmniRoute IA** | Gateway unificado de LLMs e rotas gratuitas | [Abrir OmniRoute](https://ai.157-151-15-149.sslip.io/) |
 | **Classificador de Emails IA** | Triagem inteligente de e-mails, anti-fraude e resumos | [Abrir Emails](https://email.157-151-15-149.sslip.io/) |
-| **Jarvis & Leo Voice API** | Assistente de voz residencial (Edge TTS) para TV / Mi Box | [Abrir Jarvis](https://voice.157-151-15-149.sslip.io/) |
+| **Jarvis Voice & Mi Box (Mixbox)** | Assistente inteligente residencial e hardware Mi Box sala (192.168.0.17) | [Abrir Jarvis](https://voice.157-151-15-149.sslip.io/) |
 | **N8N Automações** | Webhooks HTTPS e fluxos operacionais | [Abrir N8N](https://n8n.157-151-15-149.sslip.io/) |
 | **Bot Cloud Agent** | Agente DevOps MCP + Telegram (`@Aliexpress20_Bot`) | [Abrir no Telegram](https://t.me/Aliexpress20_Bot) |
 | **Bot Gastos Financeiro** | Controle de gastos no Telegram com Cloudflare Worker + D1 | [Abrir Worker](https://bot-gastos-telegram.bot-gastos-telegram.workers.dev/) |
