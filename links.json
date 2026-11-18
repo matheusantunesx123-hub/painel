@@ -1,11 +1,11 @@
 {
   "title": "Projeto Snake · Área de Comando",
-  "subtitle": "Central unificada: Oracle Cloud, Cloudflare Edge, Home Assistant, ESP32, Bots e Web Apps",
+  "subtitle": "Central unificada: Oracle Cloud, OmniRoute IA, Cloudflare Edge, Home Assistant, ESP32 e Web Apps",
   "links": [
     {
       "id": "painel-oracle",
       "name": "Painel Servidor Oracle",
-      "description": "Central de telemetria em tempo real (RAM, CPU, ZRAM, Disco), controle PM2, autenticação biométrica Passkeys e Sentinela Ampere 24GB",
+      "description": "Central de telemetria em tempo real (RAM, CPU, ZRAM, Disco), processos PM2, Fatura Nubank SQLite e Sentinela Ampere 24GB",
       "url": "https://157-151-15-149.sslip.io/",
       "category": "Servidores",
       "icon": "server",
@@ -14,7 +14,7 @@
     {
       "id": "snake-cloudflare",
       "name": "Snake Cloudflare Hub",
-      "description": "Borda global Cloudflare: Banco de Dados D1 SQL, Armazenamento KV, Worker Serverless e CDN Always Free",
+      "description": "Borda global Cloudflare: Banco de Dados D1 SQL, Armazenamento KV, Worker Serverless e atalhos sincronizados",
       "url": "https://projeto-snake-cloudflare.pages.dev/",
       "category": "Servidores",
       "icon": "cloud",
@@ -23,7 +23,7 @@
     {
       "id": "home-assistant",
       "name": "Home Assistant",
-      "description": "Painel central de automação residencial, dashboards Lovelace, sensores Zigbee e Wi-Fi e integração Alexa",
+      "description": "Central de automação residencial, dashboards Lovelace, dispositivos Tuya, sensores e integração Alexa",
       "url": "https://ha.157-151-15-149.sslip.io/",
       "category": "Automação",
       "icon": "home",
@@ -32,7 +32,7 @@
     {
       "id": "central-iot",
       "name": "Central IoT e Telemetria",
-      "description": "Broker MQTT e interface web de monitoramento em tempo real dos dispositivos IoT, sensores, ESP32 e RF 433MHz",
+      "description": "Broker MQTT e monitoramento em tempo real dos dispositivos IoT, sensores, ESP32 e relés RF 433MHz",
       "url": "https://iot.157-151-15-149.sslip.io/",
       "category": "Dispositivos",
       "icon": "wifi",
@@ -41,26 +41,26 @@
     {
       "id": "api-rede",
       "name": "OmniNet Controle de Rede",
-      "description": "Gestão multi-redes, roteadores locais ou em nuvem, ping seguro, radar L2/L3 e OpenL2M",
+      "description": "Gestão multi-redes, roteadores locais ou em nuvem, radar L2/L3, ping seguro e auditoria de portas",
       "url": "https://rede.157-151-15-149.sslip.io/",
       "category": "Dispositivos",
       "icon": "wifi",
       "status": "ready"
     },
     {
-      "id": "antigravity-chat",
-      "name": "Antigravity Chat Web",
-      "description": "Interface web protegida com IA e acesso às 72+ conversas, documentos Markdown e projetos da VPS Oracle",
-      "url": "https://chat.157-151-15-149.sslip.io/",
+      "id": "omniroute",
+      "name": "OmniRoute IA Gateway (Unificado)",
+      "description": "Gateway único de IA unificando Gemini, OpenRouter Free, Groq e DeepSeek em combos com fallback automático",
+      "url": "https://ai.157-151-15-149.sslip.io/",
       "category": "IA",
       "icon": "brain",
       "status": "ready"
     },
     {
-      "id": "omniroute",
-      "name": "OmniRoute IA Gateway",
-      "description": "Roteador multi-modelos LLM, cotas gratuitas combinadas e endpoint compatível OpenAI/Gemini",
-      "url": "https://ai.157-151-15-149.sslip.io/",
+      "id": "antigravity-chat",
+      "name": "Antigravity Chat Web",
+      "description": "Interface protegida com biometria conectada ao OmniRoute Unificado e às 72+ conversas e projetos da VPS",
+      "url": "https://chat.157-151-15-149.sslip.io/",
       "category": "IA",
       "icon": "brain",
       "status": "ready"
@@ -68,7 +68,7 @@
     {
       "id": "email-classifier",
       "name": "Classificador de Emails IA",
-      "description": "Painel de triagem automática, categorias, detecção anti-fraude e inteligência artificial para o Gmail",
+      "description": "Painel de triagem automática do Gmail, categorias, detecção anti-fraude e fallback via OmniRoute",
       "url": "https://email.157-151-15-149.sslip.io/",
       "category": "IA",
       "icon": "workflow",
@@ -76,8 +76,8 @@
     },
     {
       "id": "jarvis-voice",
-      "name": "Jarvis Voice & Mi Box (Mixbox)",
-      "description": "Assistente inteligente de voz residencial com síntese neural, integrado ao hardware da Mi Box na sala (192.168.0.17), Home Assistant e Gemini na Oracle Cloud",
+      "name": "Jarvis Voice & Mi Box",
+      "description": "Assistente de voz residencial (Python + Edge TTS) integrado à Mi Box da sala, Home Assistant e Central IoT",
       "url": "https://voice.157-151-15-149.sslip.io/",
       "category": "IA",
       "icon": "brain",
@@ -86,7 +86,7 @@
     {
       "id": "bot-cloud-agent",
       "name": "Bot Cloud Agent (@Aliexpress20_Bot)",
-      "description": "Agente DevOps autônomo na VPS Oracle conectado ao Antigravity via MCP e ao Telegram com OmniRoute e Gemini",
+      "description": "Agente DevOps autônomo na VPS (OmniRoute + MCP) agora unificado com o Catálogo de 90 Sensores e Módulos",
       "url": "https://t.me/Aliexpress20_Bot",
       "category": "IA",
       "icon": "brain",
@@ -102,15 +102,6 @@
       "status": "ready"
     },
     {
-      "id": "bot-fatura-nubank",
-      "name": "Bot Fatura Nubank (Painel SQLite)",
-      "description": "Conciliação de gastos compartilhados do cartão Nubank via WhatsApp/OCR com edição em tempo real no Painel Oracle",
-      "url": "https://157-151-15-149.sslip.io/#faturaSection",
-      "category": "Automação",
-      "icon": "workflow",
-      "status": "ready"
-    },
-    {
       "id": "n8n",
       "name": "N8N Automações",
       "description": "Fluxos de automação via webhooks HTTPS (editor protegido localmente via túnel SSH)",
@@ -120,18 +111,9 @@
       "status": "ready"
     },
     {
-      "id": "tuya-auto-renew",
-      "name": "Tuya Developer Platform (Auto-Renew)",
-      "description": "Console IoT da Tuya Cloud com renovação periódica automatizada pelo daemon na VPS Oracle",
-      "url": "https://platform.tuya.com/",
-      "category": "Automação",
-      "icon": "workflow",
-      "status": "ready"
-    },
-    {
       "id": "esphome",
       "name": "ESPHome Dashboard",
-      "description": "Compilação e gravação OTA de microcontroladores ESP32 e ESP8266 protegido via túnel SSH (porta 2027)",
+      "description": "Compilação e gravação OTA de microcontroladores ESP32 e ESP8266 via túnel SSH (porta 2027)",
       "url": "http://localhost:2027/",
       "category": "Dispositivos",
       "icon": "chip",
@@ -140,28 +122,19 @@
     {
       "id": "esp-lab-3d",
       "name": "ESP32 & Módulos 3D Lab Studio",
-      "description": "Laboratório Web 3D interativo (Three.js) com pinout 1:1 fiel, fiação pino a pino e modo ensinar a montar",
+      "description": "Simulador 3D interativo (Three.js) com pinout 1:1 fiel, fiação pino a pino e guia prático de montagem",
       "url": "https://matheusantunesx123-hub.github.io/esp32-3d-lab/",
       "category": "Projetos",
       "icon": "chip",
       "status": "ready"
     },
     {
-      "id": "simulador-central-esp32",
-      "name": "Simulador Wokwi · Central ESP32 RF",
-      "description": "Circuito e firmware em tempo real: receptor RF 433MHz, display OLED, relé e pareamento Tuya",
-      "url": "https://wokwi.com/projects/new/esp32",
-      "category": "Dispositivos",
-      "icon": "chip",
-      "status": "ready"
-    },
-    {
-      "id": "simulador-arduino-esp01",
-      "name": "Simulador Wokwi · Nó Arduino Uno + ESP-01",
-      "description": "Nó sensor do cômodo: Arduino Uno R3 lendo DHT22, presença PIR e botão, transmitindo via ESP-01 (8 pinos)",
-      "url": "https://wokwi.com/projects/new/arduino-uno",
-      "category": "Dispositivos",
-      "icon": "chip",
+      "id": "aws-lambda-alexa",
+      "name": "AWS Lambda Alexa",
+      "description": "Função serverless HomeAssistantAlexa que conecta o Home Assistant à skill Alexa Smart Home",
+      "url": "https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions/HomeAssistantAlexa",
+      "category": "Automação",
+      "icon": "cloud",
       "status": "ready"
     },
     {
@@ -176,34 +149,16 @@
     {
       "id": "oracle-cloud",
       "name": "Oracle Cloud Console",
-      "description": "Console oficial de gerenciamento da infraestrutura Always Free na nuvem Oracle (Vinhedo)",
+      "description": "Console oficial da infraestrutura Always Free na nuvem Oracle (Vinhedo)",
       "url": "https://cloud.oracle.com/",
       "category": "Servidores",
       "icon": "server",
       "status": "ready"
     },
     {
-      "id": "aws-lambda-alexa",
-      "name": "AWS Lambda Alexa",
-      "description": "Função serverless HomeAssistantAlexa que conecta o Home Assistant à skill Alexa Smart Home",
-      "url": "https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions/HomeAssistantAlexa",
-      "category": "Automação",
-      "icon": "cloud",
-      "status": "ready"
-    },
-    {
-      "id": "aws-console",
-      "name": "AWS Console",
-      "description": "Painel de administração da conta AWS e serviços em nuvem",
-      "url": "https://console.aws.amazon.com/",
-      "category": "Servidores",
-      "icon": "cloud",
-      "status": "ready"
-    },
-    {
       "id": "duckdns",
       "name": "DuckDNS Domínios",
-      "description": "Gerenciamento de DNS dinâmico e subdomínios gratuitos para os servidores",
+      "description": "Gerenciamento de DNS dinâmico gratuito vinculado aos serviços e Alexa",
       "url": "https://www.duckdns.org/",
       "category": "Servidores",
       "icon": "globe",
@@ -246,27 +201,9 @@
       "status": "ready"
     },
     {
-      "id": "github-esp32-lab",
-      "name": "GitHub ESP32 3D Lab",
-      "description": "Código-fonte do laboratório interativo 3D de placas ESP32, sensores e relés",
-      "url": "https://github.com/matheusantunesx123-hub/esp32-3d-lab",
-      "category": "Código",
-      "icon": "code",
-      "status": "ready"
-    },
-    {
-      "id": "github-fotos-telegram",
-      "name": "GitHub Fotos → Telegram",
-      "description": "Automação Python via GitHub Actions para envio e backup de mídia no Telegram (repositório privado)",
-      "url": "https://github.com/matheusantunesx123-hub/fotos-telegram",
-      "category": "Código",
-      "icon": "code",
-      "status": "ready"
-    },
-    {
       "id": "github-perfil",
       "name": "GitHub Perfil Completo",
-      "description": "Perfil com todos os repositórios, projetos abertos e privados no GitHub",
+      "description": "Perfil com todos os repositórios (esp32-3d-lab, fotos-telegram, sites pessoais e hubs)",
       "url": "https://github.com/matheusantunesx123-hub",
       "category": "Código",
       "icon": "code",
