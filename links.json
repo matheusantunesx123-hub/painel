@@ -21,6 +21,60 @@
       "status": "ready"
     },
     {
+      "id": "servidor-debian-local",
+      "name": "Central Servidor Debian (matheusserver)",
+      "description": "Core i5-3330 · 8GB RAM · 500GB HDD · Tailscale 100.112.218.88 · Portal de todos os containers Docker, Samba M: e XRDP",
+      "url": "http://100.112.218.88:8088/",
+      "category": "Servidores",
+      "icon": "server",
+      "status": "ready"
+    },
+    {
+      "id": "debian-cockpit",
+      "name": "Cockpit · Servidor Debian",
+      "description": "Painel administrativo Linux (CPU, RAM, discos, logs e terminal web do servidor Debian via Tailscale)",
+      "url": "https://100.112.218.88:9090/",
+      "category": "Servidores",
+      "icon": "server",
+      "status": "ready"
+    },
+    {
+      "id": "debian-portainer",
+      "name": "Portainer Docker · Debian",
+      "description": "Gerenciador visual dos containers, imagens, volumes e redes Docker do servidor doméstico Debian",
+      "url": "https://100.112.218.88:9443/",
+      "category": "Servidores",
+      "icon": "server",
+      "status": "ready"
+    },
+    {
+      "id": "debian-uptime-kuma",
+      "name": "Uptime Kuma · Monitoramento",
+      "description": "Monitor visual de uptime e disponibilidade dos serviços locais, VPS Oracle e dispositivos de rede",
+      "url": "http://100.112.218.88:3001/",
+      "category": "Servidores",
+      "icon": "globe",
+      "status": "ready"
+    },
+    {
+      "id": "debian-filebrowser",
+      "name": "FileBrowser · Arquivos Web (M:)",
+      "description": "Gerenciador de arquivos web para navegar, subir e baixar arquivos do servidor Debian direto pelo navegador",
+      "url": "http://100.112.218.88:5000/",
+      "category": "Servidores",
+      "icon": "server",
+      "status": "ready"
+    },
+    {
+      "id": "debian-dozzle",
+      "name": "Dozzle · Logs Docker ao Vivo",
+      "description": "Visualizador de logs em streaming em tempo real de todos os containers Docker do servidor Debian",
+      "url": "http://100.112.218.88:9999/",
+      "category": "Servidores",
+      "icon": "code",
+      "status": "ready"
+    },
+    {
       "id": "home-assistant",
       "name": "Home Assistant",
       "description": "Central de automação residencial, dashboards Lovelace, dispositivos Tuya, sensores e integração Alexa",
@@ -30,10 +84,37 @@
       "status": "ready"
     },
     {
+      "id": "debian-homeassistant",
+      "name": "Home Assistant Local (Debian)",
+      "description": "Instância local do Home Assistant no servidor Debian com operação independente da internet",
+      "url": "http://100.112.218.88:8123/",
+      "category": "Automação",
+      "icon": "home",
+      "status": "ready"
+    },
+    {
+      "id": "debian-n8n",
+      "name": "n8n Automação Local (Debian)",
+      "description": "Fluxos visuais de automação e webhooks rodando localmente em Docker no servidor Debian",
+      "url": "http://100.112.218.88:5678/",
+      "category": "Automação",
+      "icon": "workflow",
+      "status": "ready"
+    },
+    {
       "id": "central-iot",
       "name": "Central IoT e Telemetria",
       "description": "Broker MQTT e monitoramento em tempo real dos dispositivos IoT, sensores, ESP32 e relés RF 433MHz",
       "url": "https://iot.157-151-15-149.sslip.io/",
+      "category": "Dispositivos",
+      "icon": "wifi",
+      "status": "ready"
+    },
+    {
+      "id": "debian-adguard",
+      "name": "AdGuard Home · DNS & Bloqueio",
+      "description": "Servidor DNS local e bloqueador de anúncios/rastreadores no servidor Debian",
+      "url": "http://100.112.218.88:3000/",
       "category": "Dispositivos",
       "icon": "wifi",
       "status": "ready"
