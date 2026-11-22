@@ -192,6 +192,15 @@
       "status": "ready"
     },
     {
+      "id": "cli-anything-hub",
+      "name": "CLI-Anything Hub (103 Ferramentas)",
+      "description": "Central visual para instalar, controlar e adicionar 103 ferramentas CLI desktop (Draw.io, Obsidian, LibreOffice, ComfyUI, Ollama, etc.) integradas a agentes de IA",
+      "url": "cli_hub.html",
+      "category": "Automação",
+      "icon": "terminal",
+      "status": "ready"
+    },
+    {
       "id": "esphome",
       "name": "ESPHome Dashboard",
       "description": "Compilação e gravação OTA de microcontroladores ESP32 e ESP8266 via túnel SSH (porta 2027)",
