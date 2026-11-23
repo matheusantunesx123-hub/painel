@@ -307,6 +307,69 @@
       "category": "Código",
       "icon": "code",
       "status": "ready"
+    },
+    {
+      "id": "_omniroute_data",
+      "name": "_Omniroute_Data",
+      "description": "Projeto _omniroute_data",
+      "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/_omniroute_data/PAINEL.md",
+      "category": "Projetos Oracle",
+      "icon": "server",
+      "status": "ready"
+    },
+    {
+      "id": "_oracle_root_configs",
+      "name": "_Oracle_Root_Configs",
+      "description": "Projeto _oracle_root_configs",
+      "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/_oracle_root_configs/PAINEL.md",
+      "category": "Projetos Oracle",
+      "icon": "server",
+      "status": "ready"
+    },
+    {
+      "id": "cli-anything",
+      "name": "Cli Anything",
+      "description": "Projeto cli-anything",
+      "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/cli-anything/PAINEL.md",
+      "category": "Projetos Oracle",
+      "icon": "server",
+      "status": "ready"
+    },
+    {
+      "id": "filebrowser",
+      "name": "Filebrowser",
+      "description": "Projeto filebrowser",
+      "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/filebrowser/PAINEL.md",
+      "category": "Projetos Oracle",
+      "icon": "server",
+      "status": "ready"
+    },
+    {
+      "id": "snake-bridge",
+      "name": "Snake Bridge",
+      "description": "Projeto snake-bridge",
+      "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/snake-bridge/PAINEL.md",
+      "category": "Projetos Oracle",
+      "icon": "server",
+      "status": "ready"
+    },
+    {
+      "id": "telegram-cloud",
+      "name": "Telegram Cloud · Nuvem Pessoal",
+      "description": "Nuvem pessoal ilimitada no Telegram com tópicos/canais automáticos, painel web protegido, chunking > 19 MB e sync de faturas, e-mails, VPS e PC.",
+      "url": "https://nuvem.157-151-15-149.sslip.io/",
+      "category": "Servidores",
+      "icon": "cloud",
+      "status": "ready"
+    },
+    {
+      "id": "vaultwarden",
+      "name": "Vaultwarden",
+      "description": "Projeto vaultwarden",
+      "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/vaultwarden/PAINEL.md",
+      "category": "Projetos Oracle",
+      "icon": "server",
+      "status": "ready"
     }
   ]
 }
