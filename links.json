@@ -138,6 +138,15 @@
       "status": "ready"
     },
     {
+      "id": "artemis-mobile",
+      "name": "Artemis Mobile Agent UI",
+      "description": "Interface web nativa (Angular 19 + Admin Console) para testes autônomos, espelhamento scrcpy ao vivo, replay de passos e inspeção de traces em celulares Android",
+      "url": "http://localhost:8000/",
+      "category": "IA",
+      "icon": "smartphone",
+      "status": "ready"
+    },
+    {
       "id": "antigravity-chat",
       "name": "Antigravity Chat Web",
       "description": "Interface protegida com biometria conectada ao OmniRoute Unificado e às 72+ conversas e projetos da VPS",
@@ -202,8 +211,8 @@
     },
     {
       "id": "debian-browser-use",
-      "name": "BrowserUse · Agente Web (Debian 24/7)",
-      "description": "Agente autônomo de navegação web (Chromium + OmniRoute/Gemini) rodando 24/7 em Docker no Servidor Debian para clicar, extrair dados e baixar arquivos",
+      "name": "BrowserUse Studio v2.0 · Agente Web (Debian 24/7)",
+      "description": "Studio Web + API REST (SQLite WAL, fila serial, cancelamento, webhooks n8n/HA, screenshots, auth X-Token, multi-LLM OmniRoute/Gemini/OpenAI-compat e tela noVNC)",
       "url": "http://100.112.218.88:8095/",
       "category": "IA",
       "icon": "globe",
@@ -367,6 +376,15 @@
       "name": "Vaultwarden",
       "description": "Projeto vaultwarden",
       "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/vaultwarden/PAINEL.md",
+      "category": "Projetos Oracle",
+      "icon": "server",
+      "status": "ready"
+    },
+    {
+      "id": "_antigravity_hub",
+      "name": "_Antigravity_Hub",
+      "description": "Projeto _antigravity_hub",
+      "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/_antigravity_hub/PAINEL.md",
       "category": "Projetos Oracle",
       "icon": "server",
       "status": "ready"
