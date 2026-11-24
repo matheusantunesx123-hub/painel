@@ -26,6 +26,7 @@ Atalho central unificado e enxuto (sem serviços duplicados) para todos os pain�
 | **Bot Cloud Agent** | Agente DevOps MCP + Telegram (`@Aliexpress20_Bot`) + Catálogo de 90 Sensores | [Abrir no Telegram](https://t.me/Aliexpress20_Bot) |
 | **Bot Gastos Financeiro** | Controle de gastos `@OrgfinanceiraBot` (Cloudflare Worker + D1 SQL) | [Abrir Worker](https://bot-gastos-telegram.bot-gastos-telegram.workers.dev/) |
 | **ESP32 & Módulos 3D Lab** | Simulador 3D interativo de bancada, pinout 1:1 e circuitos | [Abrir 3D Lab](https://matheusantunesx123-hub.github.io/esp32-3d-lab/) |
+| **Artemis Mobile Agent UI** | Automação e testes autônomos em celular Android (Showcase UI + Admin Console) | [Abrir Artemis (Local)](http://localhost:8000/) |
 
 ---
 
