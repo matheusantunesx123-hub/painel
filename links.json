@@ -318,6 +318,15 @@
       "status": "ready"
     },
     {
+      "id": "graphify-mapa-codigo",
+      "name": "Graphify · Mapa de Código",
+      "description": "Grafo AST local de dependências do Projeto_Snake (Zero LLM · MCP + Skill). Mapa interativo privado via Tailscale/Debian ou local",
+      "url": "http://100.112.218.88:8088/graphify/",
+      "category": "Código",
+      "icon": "code",
+      "status": "ready"
+    },
+    {
       "id": "_omniroute_data",
       "name": "_Omniroute_Data",
       "description": "Projeto _omniroute_data",
