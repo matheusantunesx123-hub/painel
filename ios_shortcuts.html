@@ -1,0 +1,22 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071b16"><title>Atalhos do iPhone · Projeto Snake</title>
+<style>
+:root{color-scheme:dark;--bg:#071b16;--card:#102820;--line:#24483a;--text:#e8f5ee;--muted:#a9c3b4;--green:#55d69a}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% 0,#174531,var(--bg) 65%);color:var(--text);font:16px/1.5 system-ui,sans-serif;min-height:100vh;padding:32px 16px}.wrap{max-width:680px;margin:5vh auto}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,5vw,40px);box-shadow:0 20px 60px #0005}h1{margin:0 0 8px;font-size:clamp(26px,6vw,38px)}p{color:var(--muted)}label{display:block;margin:20px 0 7px;font-weight:650}input,textarea{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:11px;background:#071b16;color:var(--text);font:inherit}textarea{min-height:96px;resize:vertical}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}a.button,button{border:0;border-radius:11px;padding:13px 18px;background:var(--green);color:#062015;font:700 15px system-ui;text-decoration:none;cursor:pointer}button.secondary{background:#1d3b30;color:var(--text);border:1px solid var(--line)}.note{border-left:3px solid var(--green);padding:10px 14px;margin-top:24px;background:#0b211a;border-radius:0 9px 9px 0;font-size:14px}.status{min-height:24px;color:var(--green);font-size:14px}small{color:var(--muted)}
+</style></head>
+<body><main class="wrap"><section class="card"><small>PROJETO SNAKE · AUTOMAÇÃO IOS</small><h1>Atalhos do iPhone</h1><p>Escolha um atalho que já existe no app Atalhos e abra-o pelo iPhone. Você pode enviar um texto opcional como entrada.</p>
+<label for="name">Nome exato do atalho</label><input id="name" placeholder="Ex.: Registrar nota" autocomplete="off">
+<label for="input">Texto de entrada (opcional)</label><textarea id="input" placeholder="Texto que o atalho receberá"></textarea>
+<div class="buttons"><a class="button" id="launch" href="shortcuts://">Abrir no Atalhos</a><button class="secondary" id="copy" type="button">Copiar link</button></div><div class="status" id="status" role="status"></div>
+<div class="note"><strong>SiYuan Notes &amp; Snake Hub no iPhone (Safari PWA + Atalhos):</strong><br>
+1. <strong>Web Apps via Tailscale:</strong> <a href="http://100.112.218.88:6806/" style="color:#55d69a">SiYuan Editor (:6806)</a> · <a href="http://100.112.218.88:6807/" style="color:#55d69a">SiYuan Snake Hub (:6807)</a> — toque em <em>Compartilhar &rarr; Adicionar à Tela de Início</em> no Safari.<br>
+2. <strong>Atalho Captura Rápida iOS &rarr; SiYuan:</strong> No app Atalhos, use <em>Obter Conteúdo da URL</em> com método <code>POST</code> para <code>http://100.112.218.88:6807/api/siyuan/quick-note</code>, cabeçalho <code>X-Hub-Token</code> e JSON <code>{"title":"Nota iPhone","content":"[Entrada]","source":"iphone-atalhos"}</code>.</div>
+<div class="note"><strong>Limite do iPhone sem Mac:</strong> isso executa fluxos que você configurou no app Atalhos. Não permite ao agente tocar livremente na tela ou controlar qualquer aplicativo. No iPhone, toque em “Abrir no Atalhos” e confirme a execução se o iOS solicitar.</div></section></main>
+<script>
+const name=document.querySelector('#name'), input=document.querySelector('#input'), launch=document.querySelector('#launch'), status=document.querySelector('#status');
+function makeUrl(){const n=name.value.trim();if(!n)return 'shortcuts://';const q=new URLSearchParams({name:n});if(input.value)q.set('input','text'),q.set('text',input.value);return 'shortcuts://run-shortcut?'+q.toString()}
+function refresh(){launch.href=makeUrl()}name.addEventListener('input',refresh);input.addEventListener('input',refresh);
+document.querySelector('#copy').addEventListener('click',async()=>{if(!name.value.trim()){status.textContent='Digite o nome exato do atalho primeiro.';return}try{await navigator.clipboard.writeText(makeUrl());status.textContent='Link copiado.'}catch{status.textContent=makeUrl()}});launch.addEventListener('click',e=>{if(!name.value.trim()){e.preventDefault();status.textContent='Digite o nome exato do atalho primeiro.'}});
+</script></body></html>
