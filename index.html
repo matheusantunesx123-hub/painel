@@ -1,2397 +1,1698 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
   <meta charset="UTF-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-
   <meta name="theme-color" content="#080d0b" />
-
   <meta name="apple-mobile-web-app-capable" content="yes" />
-
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
   <meta name="apple-mobile-web-app-title" content="Comando" />
-
-  <title>Matheus Gabriel · Área de Comando</title>
-
+  <title>Matheus Gabriel · Área de Comando Unificada</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
   <style>
-
     :root {
-
       --bg: #080d0b;
-
-      --bg-surface: rgba(14, 23, 19, 0.87);
-
-      --bg-surface-hover: rgba(20, 33, 27, 0.92);
-
-      --bg-surface-inset: rgba(10, 18, 14, 0.88);
-
-      --border: rgba(173, 210, 189, 0.13);
-
-      --border-strong: rgba(173, 210, 189, 0.22);
-
-      --border-accent: rgba(116, 178, 145, 0.42);
-
+      --bg-surface: rgba(14, 23, 19, 0.89);
+      --bg-surface-hover: rgba(20, 33, 27, 0.95);
+      --bg-surface-inset: rgba(10, 18, 14, 0.90);
+      --border: rgba(173, 210, 189, 0.14);
+      --border-strong: rgba(173, 210, 189, 0.24);
+      --border-accent: rgba(116, 178, 145, 0.45);
       --text: #e2ebe6;
-
-      --muted: #8fa397;
-
+      --muted: #93a89c;
       --muted-dim: #5d7166;
-
       --accent: #5ca987;
-
       --accent-soft-text: #7cc2a2;
-
-      --accent-tint: rgba(92, 169, 135, 0.12);
-
+      --accent-tint: rgba(92, 169, 135, 0.13);
       --ok: #68b891;
-
-      --ok-soft: rgba(104, 184, 145, 0.12);
-
+      --ok-soft: rgba(104, 184, 145, 0.13);
       --danger: #d97373;
-
-      --danger-soft: rgba(217, 115, 115, 0.12);
-
+      --danger-soft: rgba(217, 115, 115, 0.13);
       --cta-bg: #dce6df;
-
       --cta-fg: #0a130f;
-
       --radius-sm: 6px;
-
       --radius-md: 8px;
-
       --radius-lg: 10px;
-
       --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
       --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
-
     }
-
-
 
     * {
-
       box-sizing: border-box;
-
       margin: 0;
-
       padding: 0;
-
       -webkit-tap-highlight-color: transparent;
-
     }
-
-
 
     html { color-scheme: dark; }
 
-
-
     body {
-
       position: relative;
-
       font-family: var(--font-sans);
-
       background-color: var(--bg);
-
       color: var(--text);
-
       min-height: 100vh;
-
-      min-height: -webkit-fill-available;
-
       overflow-x: hidden;
-
-      padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(40px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
-
+      padding: max(20px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(48px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
       display: flex;
-
       flex-direction: column;
-
       align-items: center;
-
     }
-
-
 
     body::before {
-
       content: "";
-
       position: fixed;
-
       inset: 0;
-
       z-index: -2;
-
       pointer-events: none;
-
       background:
-
-        radial-gradient(circle at 50% 25%, rgba(8, 13, 11, 0.34) 0%, rgba(8, 13, 11, 0.72) 100%),
-
+        radial-gradient(circle at 50% 25%, rgba(8, 13, 11, 0.36) 0%, rgba(8, 13, 11, 0.76) 100%),
         url("data:image/webp;base64,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") center / cover no-repeat;
-
     }
-
-
 
     .container {
-
       width: 100%;
-
-      max-width: 1100px;
-
+      max-width: 1140px;
       display: flex;
-
       flex-direction: column;
-
-      gap: 18px;
-
+      gap: 20px;
     }
-
-
 
     header {
-
       display: flex;
-
       flex-direction: column;
-
       gap: 14px;
-
     }
-
-
 
     .header-top {
-
       display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
       gap: 14px;
-
       background: var(--bg-surface);
-
       backdrop-filter: blur(8px);
-
       border: 1px solid var(--border);
-
       border-radius: var(--radius-lg);
-
       padding: 12px 16px;
-
       box-shadow: inset 0 1px 0 rgba(220, 240, 229, 0.045);
-
     }
-
-
 
     .brand {
-
       display: flex;
-
       align-items: center;
-
       gap: 12px;
-
       min-width: 0;
-
     }
-
-
 
     .avatar {
-
-      width: 36px;
-
-      height: 36px;
-
+      width: 38px;
+      height: 38px;
       border-radius: var(--radius-md);
-
       background: var(--bg-surface-hover);
-
       border: 1px solid var(--border-strong);
-
       color: var(--accent-soft-text);
-
       display: grid;
-
       place-items: center;
-
       font-family: var(--font-mono);
-
       font-weight: 600;
-
-      font-size: 0.82rem;
-
+      font-size: 0.84rem;
       letter-spacing: 0.04em;
-
       flex-shrink: 0;
-
     }
-
-
 
     .brand-text { min-width: 0; }
 
-
-
     .brand-text h1 {
-
-      font-size: 1.02rem;
-
+      font-size: 1.04rem;
       font-weight: 600;
-
       letter-spacing: -0.015em;
-
       line-height: 1.2;
-
-      white-space: nowrap;
-
-      overflow: hidden;
-
-      text-overflow: ellipsis;
-
     }
-
-
 
     .brand-text p {
-
-      font-size: 0.78rem;
-
+      font-size: 0.79rem;
       color: var(--muted);
-
       margin-top: 2px;
-
       line-height: 1.25;
-
-      white-space: nowrap;
-
-      overflow: hidden;
-
-      text-overflow: ellipsis;
-
     }
-
-
 
     .header-actions {
-
       display: flex;
-
       gap: 8px;
-
       align-items: center;
-
       flex-shrink: 0;
-
     }
-
-
 
     button, .btn {
-
       font-family: inherit;
-
       border: 1px solid var(--border-strong);
-
       background: var(--bg-surface-hover);
-
       color: var(--text);
-
       border-radius: var(--radius-md);
-
       padding: 8px 14px;
-
       font-size: 0.83rem;
-
       font-weight: 500;
-
       cursor: pointer;
-
       display: inline-flex;
-
       align-items: center;
-
       justify-content: center;
-
       gap: 7px;
-
       min-height: 38px;
-
       transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
-
-      touch-action: manipulation;
-
     }
-
-
 
     button:hover, .btn:hover {
-
       background: #1a2a23;
-
       border-color: var(--border-accent);
-
     }
 
-
-
-    button:active, .btn:active {
-
-      transform: scale(0.98);
-
+    button:focus-visible, .btn:focus-visible, a.card:focus-visible, input:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
-
-
 
     button.primary, .btn.primary {
-
       background: var(--cta-bg);
-
       border-color: var(--cta-bg);
-
       color: var(--cta-fg);
-
       font-weight: 600;
-
     }
-
-
 
     button.primary:hover, .btn.primary:hover {
-
       background: #ebf2ee;
-
       border-color: #ebf2ee;
-
     }
-
-
 
     button.icon-only {
-
       padding: 0;
-
       width: 38px;
-
       height: 38px;
-
     }
-
-
-
-    /* ARCHITECTURAL SUMMARY STRIP */
 
     .command-strip {
-
       border-radius: var(--radius-lg);
-
       border: 1px solid var(--border);
-
       background: var(--bg-surface);
-
       padding: 18px 22px;
-
       display: grid;
-
       grid-template-columns: 1.45fr 0.75fr;
-
       align-items: center;
-
       gap: 20px;
-
       box-shadow: inset 0 1px 0 rgba(220, 240, 229, 0.04);
-
     }
-
-
 
     .strip-copy {
-
       display: flex;
-
       flex-direction: column;
-
       gap: 6px;
-
     }
-
-
 
     .strip-meta {
-
       font-family: var(--font-mono);
-
       font-size: 0.72rem;
-
       letter-spacing: 0.06em;
-
       text-transform: uppercase;
-
       color: var(--accent-soft-text);
-
     }
-
-
 
     .strip-copy h2 {
-
-      font-size: clamp(1.22rem, 2.2vw, 1.52rem);
-
+      font-size: clamp(1.22rem, 2.2vw, 1.48rem);
       font-weight: 600;
-
       letter-spacing: -0.02em;
-
       line-height: 1.2;
-
       color: var(--text);
-
     }
-
-
 
     .strip-copy p {
-
       font-size: 0.87rem;
-
       color: var(--muted);
-
       line-height: 1.5;
-
-      max-width: 60ch;
-
+      max-width: 65ch;
     }
-
-
 
     .strip-stats {
-
       display: flex;
-
       flex-direction: column;
-
       align-items: flex-end;
-
       gap: 10px;
-
     }
-
-
 
     .strip-counters {
-
       display: flex;
-
       flex-wrap: wrap;
-
       justify-content: flex-end;
-
       gap: 8px;
-
     }
-
-
 
     .stat-chip {
-
       display: inline-flex;
-
       align-items: center;
-
       gap: 6px;
-
       padding: 5px 10px;
-
       border-radius: var(--radius-sm);
-
       background: var(--bg-surface-inset);
-
       border: 1px solid var(--border);
-
       font-family: var(--font-mono);
-
       font-size: 0.73rem;
-
       color: var(--muted);
-
-      font-variant-numeric: tabular-nums;
-
     }
-
-
 
     .stat-chip strong {
-
       color: var(--text);
-
       font-weight: 600;
-
     }
-
-
 
     .bus-diagram {
-
       width: min(260px, 100%);
-
       height: 44px;
-
       display: block;
-
     }
 
-
-
-    /* TOOLBAR: SEARCH & FILTERS */
-
+    /* TOOLBAR: SEARCH & DUAL FILTERS */
     .toolbar {
-
       display: flex;
-
       flex-direction: column;
-
       gap: 10px;
-
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
     }
-
-
 
     .search-box {
-
       position: relative;
-
       width: 100%;
-
     }
-
-
 
     .search-box svg {
-
       position: absolute;
-
       left: 14px;
-
       top: 50%;
-
       transform: translateY(-50%);
-
       color: var(--muted);
-
       pointer-events: none;
-
     }
-
-
 
     .search-box input {
-
       width: 100%;
-
-      background: var(--bg-surface);
-
-      border: 1px solid var(--border);
-
+      background: var(--bg-surface-inset);
+      border: 1px solid var(--border-strong);
       border-radius: var(--radius-md);
-
       padding: 11px 42px;
-
       color: var(--text);
-
       font-family: var(--font-sans);
-
       font-size: 0.92rem;
-
       outline: none;
-
-      transition: border-color 0.15s ease, background 0.15s ease;
-
       min-height: 44px;
-
     }
-
-
 
     .search-box input::placeholder { color: var(--muted-dim); }
-
-
-
-    .search-box input:focus {
-
-      background: var(--bg-surface-inset);
-
-      border-color: var(--border-accent);
-
-    }
-
-
+    .search-box input:focus { border-color: var(--border-accent); }
 
     .search-box .clear-btn {
-
       position: absolute;
-
       right: 8px;
-
       top: 50%;
-
       transform: translateY(-50%);
-
       background: transparent;
-
       border: none;
-
       color: var(--muted);
-
       width: 30px;
-
       height: 30px;
-
       min-height: 30px;
-
       padding: 0;
-
-      border-radius: var(--radius-sm);
-
       display: none;
-
     }
 
+    .filter-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
+    .filter-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-soft-text);
+      min-width: 98px;
+      flex-shrink: 0;
+    }
 
     .filters-wrap {
-
       width: 100%;
-
       overflow-x: auto;
-
-      -webkit-overflow-scrolling: touch;
-
       scrollbar-width: none;
-
     }
-
-
 
     .filters-wrap::-webkit-scrollbar { display: none; }
 
-
-
     .filters {
-
       display: flex;
-
       gap: 6px;
-
       width: max-content;
-
-      padding: 4px;
-
+      padding: 3px;
       border-radius: var(--radius-md);
-
       background: var(--bg-surface-inset);
-
       border: 1px solid var(--border);
-
     }
-
-
 
     .chip {
-
-      padding: 6px 13px;
-
+      padding: 5px 12px;
       border-radius: var(--radius-sm);
-
-      font-size: 0.79rem;
-
+      font-size: 0.78rem;
       font-weight: 500;
-
       background: transparent;
-
       border: 1px solid transparent;
-
       color: var(--muted);
-
       cursor: pointer;
-
       white-space: nowrap;
-
-      min-height: 32px;
-
-      display: inline-flex;
-
-      align-items: center;
-
-      transition: background 0.15s ease, color 0.15s ease;
-
+      min-height: 30px;
     }
-
-
 
     .chip:hover {
-
       color: var(--text);
-
       background: rgba(173, 210, 189, 0.06);
-
     }
-
-
 
     .chip.active {
-
       background: var(--cta-bg);
-
       border-color: var(--cta-bg);
-
       color: var(--cta-fg);
-
       font-weight: 600;
-
     }
 
+    /* GROUPED SECTIONS */
+    .sections-root {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
 
+    .category-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-    /* DIRECTORY GRID */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 12px 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-strong);
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-md);
+    }
+
+    .section-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .section-header h3 {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .section-header p {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .section-count {
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      font-weight: 600;
+      color: var(--accent-soft-text);
+      background: var(--accent-tint);
+      border: 1px solid rgba(92, 169, 135, 0.28);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+    }
 
     .grid {
-
       display: grid;
-
-      grid-template-columns: repeat(auto-fill, minmax(308px, 1fr));
-
+      grid-template-columns: repeat(auto-fill, minmax(328px, 1fr));
       gap: 12px;
-
     }
-
-
 
     .card {
-
       background: var(--bg-surface);
-
       border: 1px solid var(--border);
-
       border-radius: var(--radius-lg);
-
       padding: 16px;
-
       display: flex;
-
       flex-direction: column;
-
-      gap: 12px;
-
+      gap: 11px;
       text-decoration: none;
-
       color: inherit;
-
       position: relative;
-
       box-shadow: inset 0 1px 0 rgba(220, 240, 229, 0.035);
-
       transition: background 0.16s ease, border-color 0.16s ease, transform 0.14s ease;
-
-      touch-action: manipulation;
-
     }
-
-
-
-    .card:first-child {
-
-      border-left: 2px solid var(--accent);
-
-      background: #101b16;
-
-    }
-
-
 
     .card:hover {
-
       background: var(--bg-surface-hover);
-
       border-color: var(--border-accent);
-
-      transform: translateY(-1px);
-
+      transform: translateY(-2px);
     }
-
-
-
-    .card:active { transform: scale(0.99); }
-
-
 
     .card-head {
-
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
       gap: 10px;
-
     }
-
-
 
     .icon-box {
-
       width: 38px;
-
       height: 38px;
-
       border-radius: var(--radius-md);
-
       background: var(--bg-surface-inset);
-
       border: 1px solid var(--border);
-
       color: var(--accent-soft-text);
-
       display: grid;
-
       place-items: center;
-
       flex-shrink: 0;
-
     }
-
-
 
     .badge-group {
-
       display: flex;
-
       align-items: center;
-
       gap: 6px;
-
       flex-wrap: wrap;
-
       justify-content: flex-end;
-
     }
-
-
 
     .badge {
-
       font-family: var(--font-mono);
-
-      font-size: 0.67rem;
-
-      font-weight: 500;
-
+      font-size: 0.68rem;
+      font-weight: 600;
       padding: 3px 8px;
-
       border-radius: var(--radius-sm);
-
-      text-transform: uppercase;
-
-      letter-spacing: 0.04em;
-
+      letter-spacing: 0.03em;
     }
-
-
 
     .badge.ready {
-
       background: var(--ok-soft);
-
-      border: 1px solid rgba(104, 184, 145, 0.24);
-
+      border: 1px solid rgba(104, 184, 145, 0.28);
       color: var(--ok);
-
     }
 
-
-
-    .badge.category {
-
-      background: var(--bg-surface-inset);
-
-      color: var(--muted);
-
-      border: 1px solid var(--border);
-
+    .badge.host-oracle {
+      background: rgba(92, 169, 135, 0.15);
+      color: #8fd4b5;
+      border: 1px solid rgba(92, 169, 135, 0.34);
     }
 
+    .badge.host-debian {
+      background: rgba(56, 189, 248, 0.13);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.30);
+    }
 
+    .badge.host-local {
+      background: rgba(245, 158, 11, 0.14);
+      color: #fcd34d;
+      border: 1px solid rgba(245, 158, 11, 0.32);
+    }
+
+    .badge.host-edge {
+      background: rgba(167, 139, 250, 0.14);
+      color: #c4b5fd;
+      border: 1px solid rgba(167, 139, 250, 0.32);
+    }
+
+    .role-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.71rem;
+      font-weight: 600;
+      color: var(--accent-soft-text);
+      letter-spacing: 0.02em;
+      background: rgba(92, 169, 135, 0.10);
+      border: 1px solid rgba(92, 169, 135, 0.22);
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      width: fit-content;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+    }
 
     .card-body h2 {
-
-      font-size: 0.99rem;
-
+      font-size: 1.01rem;
       font-weight: 600;
-
       letter-spacing: -0.01em;
-
       color: var(--text);
-
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
       gap: 8px;
-
     }
-
-
 
     .card-body h2 .ext-icon {
-
       color: var(--muted-dim);
-
       flex-shrink: 0;
-
-      transition: color 0.15s ease;
-
     }
-
-
 
     .card:hover .card-body h2 .ext-icon { color: var(--accent-soft-text); }
 
-
-
     .card-body p {
-
       font-size: 0.84rem;
-
       color: var(--muted);
-
-      line-height: 1.48;
-
-      margin-top: 5px;
-
+      line-height: 1.5;
+      margin-top: 6px;
     }
-
-
 
     .card-foot {
-
       margin-top: auto;
-
       padding-top: 10px;
-
       border-top: 1px solid rgba(173, 210, 189, 0.08);
-
       display: flex;
-
       justify-content: space-between;
-
       align-items: center;
-
       gap: 8px;
-
     }
-
-
 
     .url-chip {
-
       font-family: var(--font-mono);
-
-      font-size: 0.72rem;
-
+      font-size: 0.71rem;
       color: var(--muted);
-
       background: var(--bg-surface-inset);
-
       border: 1px solid var(--border);
-
       padding: 4px 8px;
-
       border-radius: var(--radius-sm);
-
       overflow: hidden;
-
       text-overflow: ellipsis;
-
       white-space: nowrap;
-
-      max-width: 210px;
-
+      max-width: 225px;
     }
-
-
 
     .card-btns { display: flex; gap: 6px; }
 
-
-
     .mini-btn {
-
       padding: 5px 10px;
-
       font-size: 0.74rem;
-
       min-height: 28px;
-
       border-radius: var(--radius-sm);
-
       border-color: var(--border);
-
       background: transparent;
-
     }
-
-
 
     .empty-state {
-
-      grid-column: 1 / -1;
-
       text-align: center;
-
       padding: 44px 20px;
-
       color: var(--muted);
-
       border: 1px dashed var(--border-strong);
-
       border-radius: var(--radius-lg);
-
       background: var(--bg-surface);
-
     }
-
-
 
     footer {
-
-      margin-top: 14px;
-
+      margin-top: 16px;
       padding: 12px 0 4px;
-
       text-align: center;
-
       font-family: var(--font-mono);
-
-      font-size: 0.72rem;
-
+      font-size: 0.73rem;
       color: var(--muted-dim);
-
-      letter-spacing: 0.04em;
-
     }
-
-
 
     dialog {
-
       margin: auto;
-
       background: #101b16;
-
       color: var(--text);
-
       border: 1px solid var(--border-strong);
-
       border-radius: var(--radius-lg);
-
       padding: 22px;
-
-      width: min(480px, 94vw);
-
+      width: min(490px, 94vw);
     }
 
-
-
-    dialog::backdrop {
-
-      background: rgba(5, 9, 7, 0.76);
-
-    }
-
-
+    dialog::backdrop { background: rgba(5, 9, 7, 0.78); }
 
     .form-group {
-
       display: flex;
-
       flex-direction: column;
-
       gap: 6px;
-
       margin-bottom: 13px;
-
     }
-
-
 
     .form-group label {
-
       font-size: 0.79rem;
-
       font-weight: 500;
-
       color: var(--muted);
-
     }
-
-
 
     .form-group input, .form-group select {
-
       background: var(--bg-surface-inset);
-
       border: 1px solid var(--border-strong);
-
       border-radius: var(--radius-md);
-
       padding: 10px 12px;
-
       color: var(--text);
-
       font-family: var(--font-sans);
-
       font-size: 0.92rem;
-
       outline: none;
-
       min-height: 42px;
-
     }
-
-
-
-    .form-group input:focus, .form-group select:focus {
-
-      border-color: var(--accent);
-
-    }
-
-
 
     .modal-foot {
-
       display: flex;
-
       justify-content: flex-end;
-
       gap: 8px;
-
       margin-top: 18px;
-
     }
-
-
 
     @media (max-width: 820px) {
-
       .command-strip {
-
         grid-template-columns: 1fr;
-
         padding: 16px;
-
-        gap: 14px;
-
       }
-
-      .strip-stats {
-
-        align-items: flex-start;
-
-      }
-
-      .strip-counters {
-
-        justify-content: flex-start;
-
-      }
-
+      .strip-stats { align-items: flex-start; }
+      .strip-counters { justify-content: flex-start; }
+      .filter-row { flex-direction: column; align-items: flex-start; gap: 6px; }
     }
-
-
-
-    @media (max-width: 640px) {
-
-      body {
-
-        padding: max(12px, env(safe-area-inset-top)) 12px max(24px, env(safe-area-inset-bottom)) 12px;
-
-      }
-
-
-
-      .header-top { padding: 10px 12px; }
-
-      .brand-text h1 { font-size: 0.98rem; }
-
-      .brand-text p { font-size: 0.73rem; }
-
-
-
-      .grid {
-
-        grid-template-columns: 1fr;
-
-        gap: 10px;
-
-      }
-
-
-
-      .card { padding: 14px; }
-
-
-
-      dialog {
-
-        width: 100vw;
-
-        max-width: 100vw;
-
-        margin: auto 0 0 0;
-
-        border-radius: 14px 14px 0 0;
-
-        border-bottom: none;
-
-        padding: 20px 16px max(24px, env(safe-area-inset-bottom)) 16px;
-
-      }
-
-    }
-
   </style>
-
 </head>
-
 <body>
-
   <div class="container">
-
     <header>
-
       <div class="header-top">
-
         <div class="brand">
-
           <div class="avatar">MG</div>
-
           <div class="brand-text">
-
-            <h1 id="page-title">Área de Comando</h1>
-
-            <p id="page-subtitle">Projetos, automações e servidores Always Free</p>
-
+            <h1 id="page-title">Projeto Snake · Área de Comando Unificada</h1>
+            <p id="page-subtitle">Mapa visual claro: o que cada painel faz e em qual servidor está rodando</p>
           </div>
-
         </div>
-
         <div class="header-actions">
-
-          <a class="btn" href="https://157-151-15-149.sslip.io/passkeys" target="_blank" rel="noopener noreferrer" style="text-decoration:none;" title="Cadastrar ou gerenciar digital (Windows Hello / Passkey)">👆 Digital</a>
-
-          <button class="primary" id="btn-add" title="Adicionar atalho">+ Atalho</button>
-
+          <a class="btn" href="https://157-151-15-149.sslip.io/passkeys" target="_blank" rel="noopener noreferrer" style="text-decoration:none;" title="Cadastrar ou gerenciar digital (Windows Hello / Passkey)">Digital</a>
+          <button class="primary" id="btn-add" title="Adicionar novo painel">+ Painel</button>
           <button class="icon-only" id="btn-export" title="Exportar links.json">
-
             <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-
             </svg>
-
           </button>
-
         </div>
-
       </div>
-
-
 
       <section class="command-strip" aria-label="Visão Geral do Ecossistema">
-
         <div class="strip-copy">
-
-          <span class="strip-meta">ORACLE CLOUD · HOME ASSISTANT · MQTT · ESP32</span>
-
-          <h2>Diretório Central de Serviços e Dispositivos</h2>
-
-          <p>Atalhos diretos para os painéis da nuvem Always Free, automação residencial, roteadores de rede e bots em execução contínua.</p>
-
+          <span class="strip-meta">PASTA RAIZ UNIFICADA · VPS ORACLE · SERVIDOR DEBIAN · NOTEBOOK LOCAL</span>
+          <h2>Guia Organizado de Todos os Seus Painéis</h2>
+          <p>Cada painel agora mostra no topo uma etiqueta com a sua função direta ("Para que serve") e em qual servidor roda (VPS Oracle, Servidor Debian, Notebook Local ou Cloudflare/GitHub).</p>
         </div>
-
         <div class="strip-stats">
-
           <svg class="bus-diagram" viewBox="0 0 260 44" fill="none" aria-hidden="true">
-
             <line x1="20" y1="22" x2="240" y2="22" stroke="rgba(173,210,189,0.2)" stroke-width="1.2"/>
-
-            <rect x="12" y="12" width="44" height="20" rx="4" fill="#0a120e" stroke="#5ca987" stroke-width="1.2"/>
-
-            <text x="34" y="25" text-anchor="middle" fill="#97ab9f" font-family="IBM Plex Mono, monospace" font-size="8">OCI</text>
-
-            <rect x="108" y="12" width="44" height="20" rx="4" fill="#14211b" stroke="#7cc2a2" stroke-width="1.3"/>
-
-            <text x="130" y="25" text-anchor="middle" fill="#e2ebe6" font-family="IBM Plex Mono, monospace" font-size="8">MQTT</text>
-
-            <rect x="204" y="12" width="44" height="20" rx="4" fill="#0a120e" stroke="#5ca987" stroke-width="1.2"/>
-
-            <text x="226" y="25" text-anchor="middle" fill="#97ab9f" font-family="IBM Plex Mono, monospace" font-size="8">HA</text>
-
+            <rect x="12" y="12" width="52" height="20" rx="4" fill="#0a120e" stroke="#5ca987" stroke-width="1.2"/>
+            <text x="38" y="25" text-anchor="middle" fill="#97ab9f" font-family="IBM Plex Mono, monospace" font-size="8">ORACLE</text>
+            <rect x="104" y="12" width="52" height="20" rx="4" fill="#14211b" stroke="#7cc2a2" stroke-width="1.3"/>
+            <text x="130" y="25" text-anchor="middle" fill="#e2ebe6" font-family="IBM Plex Mono, monospace" font-size="8">DEBIAN</text>
+            <rect x="196" y="12" width="52" height="20" rx="4" fill="#0a120e" stroke="#5ca987" stroke-width="1.2"/>
+            <text x="222" y="25" text-anchor="middle" fill="#97ab9f" font-family="IBM Plex Mono, monospace" font-size="8">LOCAL</text>
           </svg>
-
           <div class="strip-counters">
-
-            <span class="stat-chip">Atalhos: <strong id="hero-count">--</strong></span>
-
-            <span class="stat-chip">IP: <strong>157.151.15.149</strong></span>
-
-            <span class="stat-chip">Custo: <strong>R$ 0,00</strong></span>
-
+            <span class="stat-chip">Painéis: <strong id="hero-count">--</strong></span>
+            <span class="stat-chip">VPS Oracle: <strong>157.151.15.149</strong></span>
+            <span class="stat-chip">Debian: <strong>100.112.218.88</strong></span>
           </div>
-
         </div>
-
       </section>
 
-
-
       <div class="toolbar">
-
         <div class="search-box">
-
           <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-
             <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-
           </svg>
-
-          <input id="search" type="search" placeholder="Filtrar por nome, serviço, IoT ou categoria..." autocomplete="off" />
-
+          <input id="search" type="search" placeholder="O que você procura? (ex: celular, música, spotify, senhas, e-mail, casa, alexa, docker, arquivos)..." autocomplete="off" />
           <button type="button" class="clear-btn" id="clear-search">&times;</button>
-
         </div>
 
-
-
-        <div class="filters-wrap">
-
-          <div class="filters" id="filters"></div>
-
+        <div class="filter-row">
+          <span class="filter-label">1. O que faz:</span>
+          <div class="filters-wrap">
+            <div class="filters" id="filters"></div>
+          </div>
         </div>
 
+        <div class="filter-row">
+          <span class="filter-label">2. Onde roda:</span>
+          <div class="filters-wrap">
+            <div class="filters" id="host-filters"></div>
+          </div>
+        </div>
       </div>
-
     </header>
 
-
-
-    <main class="grid" id="grid"></main>
-
-
+    <main class="sections-root" id="grid"></main>
 
     <footer>
-
-      <span>Always Free · Matheus Gabriel · 100% Gratuito</span>
-
+      <span>Pasta Raiz Unificada: Projeto_Snake · Always Free · Matheus Gabriel</span>
     </footer>
-
   </div>
 
-
-
-  <!-- MODAL EDITAR / NOVO ATALHO -->
-
   <dialog id="modal">
-
     <form id="link-form">
-
-      <h3 style="margin-bottom: 14px;" id="modal-title">Novo Atalho</h3>
-
+      <h3 style="margin-bottom: 14px;" id="modal-title">Novo Painel</h3>
       <input type="hidden" id="field-id" />
 
-      
-
       <div class="form-group">
-
-        <label for="field-name">Nome do Projeto / Serviço</label>
-
-        <input id="field-name" required placeholder="Ex: Central de Automação" />
-
+        <label for="field-name">Nome Claro do Painel</label>
+        <input id="field-name" required placeholder="Ex: Spotify · Máquina do Tempo" />
       </div>
 
-
-
       <div class="form-group">
-
-        <label for="field-url">Endereço Web (URL)</label>
-
-        <input id="field-url" type="url" required placeholder="https://..." />
-
+        <label for="field-role">Para que serve? (Resumo em 3-5 palavras)</label>
+        <input id="field-role" required placeholder="Ex: Viagem Nostálgica pelas Suas Músicas" />
       </div>
 
-
-
       <div class="form-group">
-
-        <label for="field-desc">Descrição Resumida</label>
-
-        <input id="field-desc" placeholder="Ex: Monitoramento e controle" />
-
-      </div>
-
-
-
-      <div class="form-group">
-
-        <label for="field-cat">Categoria</label>
-
-        <select id="field-cat">
-
-          <option value="Automação">Automação</option>
-
-          <option value="Servidores">Servidores</option>
-
-          <option value="IA">Inteligência Artificial (IA)</option>
-
-          <option value="Dispositivos">Dispositivos & IoT</option>
-
-          <option value="Projetos">Projetos</option>
-
-          <option value="Código">Código & GitHub</option>
-
+        <label for="field-host">Onde está rodando?</label>
+        <select id="field-host">
+          <option value="VPS Oracle">VPS Oracle (Nuvem 157.151.15.149)</option>
+          <option value="Servidor Debian">Servidor Debian (Casa 100.112.218.88)</option>
+          <option value="Notebook Local">Notebook Local (Windows PC)</option>
+          <option value="Cloudflare Edge">Cloudflare Edge (Serverless)</option>
+          <option value="GitHub Web">GitHub Web (Pages / Repositório)</option>
         </select>
-
       </div>
 
+      <div class="form-group">
+        <label for="field-url">Endereço Web (URL)</label>
+        <input id="field-url" type="url" required placeholder="https://..." />
+      </div>
 
+      <div class="form-group">
+        <label for="field-desc">Explicação Simples do que Faz</label>
+        <input id="field-desc" placeholder="Explique de forma direta o que este painel controla" />
+      </div>
+
+      <div class="form-group">
+        <label for="field-cat">Seção / Categoria</label>
+        <select id="field-cat">
+          <option value="Centrais de Comando">1. Centrais de Comando</option>
+          <option value="IA & Agentes">2. IA & Agentes</option>
+          <option value="Casa Inteligente & IoT">3. Casa Inteligente & IoT</option>
+          <option value="Servidores, Rede & Automação">4. Servidores, Rede & Automação</option>
+          <option value="Nuvem, Arquivos & Finanças">5. Nuvem, Arquivos & Finanças</option>
+          <option value="Sites & Projetos Web">6. Sites & Projetos Web</option>
+        </select>
+      </div>
 
       <div class="modal-foot">
-
         <button type="button" id="btn-delete" style="color: var(--danger); margin-right: auto; display: none;">Excluir</button>
-
         <button type="button" id="btn-cancel">Cancelar</button>
-
         <button type="submit" class="primary">Salvar</button>
-
       </div>
-
     </form>
-
   </dialog>
 
-
-
   <script>
+    const STORAGE_KEY = "painel_comando_custom_links_v4";
 
-    const STORAGE_KEY = "painel_comando_custom_links_v3";
-
-
-
-    const ICONS = {
-
-      terminal: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>`,
-
-      server: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><circle cx="6" cy="7" r="1"/><circle cx="6" cy="17" r="1"/></svg>`,
-
-      home: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"/></svg>`,
-
-      workflow: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M9 6h4a2 2 0 0 1 2 2v7"/></svg>`,
-
-      brain: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04zm5 0A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/></svg>`,
-
-      chip: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>`,
-
-      wifi: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>`,
-
-      cloud: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>`,
-
-      globe: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>`,
-
-      code: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>`,
-
-      external: `<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>`
-
+    const CATEGORY_META = {
+      "Centrais de Comando": {
+        order: 1,
+        title: "1 · Centrais de Comando (Painéis-Mestre)",
+        subtitle: "Os 5 painéis gerais que controlam toda a VPS Oracle, o Servidor Debian, o Hub SiYuan, a Cloudflare e o Aplicativo do Notebook."
+      },
+      "IA & Agentes": {
+        order: 2,
+        title: "2 · Inteligência Artificial & Robôs Autônomos",
+        subtitle: "Seus chats com IA, gerador de super-prompts, controle autônomo do celular Android (Artemis), navegador robô 24h, triagem de Gmail e voz Jarvis."
+      },
+      "Casa Inteligente & IoT": {
+        order: 3,
+        title: "3 · Casa Inteligente, Sensores & Microcontroladores",
+        subtitle: "Interruptores, lâmpadas, Alexa, Home Assistant (Nuvem e Local), sensores MQTT, controles RF 433MHz e bancada 3D de fiação ESP32/Arduino."
+      },
+      "Servidores, Rede & Automação": {
+        order: 4,
+        title: "4 · Administração de Servidores, Rede, Segurança & Fluxos",
+        subtitle: "Gerenciar containers Docker, ver logs de erros ao vivo, monitorar quedas (Uptime Kuma), bloquear anúncios (AdGuard), cofre de senhas e fluxos n8n."
+      },
+      "Nuvem, Arquivos & Finanças": {
+        order: 5,
+        title: "5 · Nuvem Pessoal, Arquivos, Caderno de Notas & Gastos",
+        subtitle: "Sua nuvem ilimitada no Telegram, caderno completo SiYuan Notes, HD de 500GB do servidor Debian pelo navegador e controle de gastos."
+      },
+      "Sites & Projetos Web": {
+        order: 6,
+        title: "6 · Sites Publicados, Spotify & Projetos Acadêmicos",
+        subtitle: "Spotify Máquina do Tempo, ranking musical ao vivo, Plataforma LUMEN (Saúde Mental), site de Programação Web, portfólio e GitHub."
+      }
     };
 
-
+    const ICONS = {
+      terminal: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>`,
+      server: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><circle cx="6" cy="7" r="1"/><circle cx="6" cy="17" r="1"/></svg>`,
+      home: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1Z"/></svg>`,
+      workflow: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M9 6h4a2 2 0 0 1 2 2v7"/></svg>`,
+      brain: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-2.04zm5 0A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-2.04z"/></svg>`,
+      chip: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>`,
+      wifi: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>`,
+      cloud: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>`,
+      globe: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>`,
+      code: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>`,
+      smartphone: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,
+      music: `<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`,
+      external: `<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>`
+    };
 
     let baseLinks = [
   {
     "id": "painel-oracle",
-    "name": "Painel Servidor Oracle",
-    "description": "Central de telemetria em tempo real (RAM, CPU, ZRAM, Disco), processos PM2, Fatura Nubank SQLite e Sentinela Ampere 24GB",
+    "name": "Painel Servidor Oracle (Geral)",
+    "role": "Telemetria VPS, PM2 & Fatura Nubank",
+    "host": "VPS Oracle",
+    "description": "Controla a VPS Oracle Cloud: mostra uso de RAM/CPU/Disco ao vivo, reinicia bots PM2, exibe a Fatura Nubank SQLite e o Sentinela Ampere 24GB.",
     "url": "https://157-151-15-149.sslip.io/",
-    "category": "Servidores",
+    "category": "Centrais de Comando",
     "icon": "server",
-    "status": "ready"
-  },
-  {
-    "id": "snake-cloudflare",
-    "name": "Snake Cloudflare Hub",
-    "description": "Borda global Cloudflare: Banco de Dados D1 SQL, Armazenamento KV, Worker Serverless e atalhos sincronizados",
-    "url": "https://projeto-snake-cloudflare.pages.dev/",
-    "category": "Servidores",
-    "icon": "cloud",
     "status": "ready"
   },
   {
     "id": "servidor-debian-local",
     "name": "Central Servidor Debian (matheusserver)",
-    "description": "Core i5-3330 · 8GB RAM · 500GB HDD · Tailscale 100.112.218.88 · Portal de todos os containers Docker, Samba M: e XRDP",
+    "role": "Portal Geral do Servidor de Casa",
+    "host": "Servidor Debian",
+    "description": "Painel principal do seu PC Servidor Debian (Core i5 · 8GB RAM · 500GB) via Tailscale: reúne todos os containers Docker locais, disco M: e status.",
     "url": "http://100.112.218.88:8088/",
-    "category": "Servidores",
+    "category": "Centrais de Comando",
     "icon": "server",
     "status": "ready"
   },
   {
-    "id": "debian-cockpit",
-    "name": "Cockpit · Servidor Debian",
-    "description": "Painel administrativo Linux (CPU, RAM, discos, logs e terminal web do servidor Debian via Tailscale)",
-    "url": "https://100.112.218.88:9090/",
-    "category": "Servidores",
+    "id": "debian-siyuan-hub",
+    "name": "SiYuan Snake Hub & Configurações",
+    "role": "Super-Painel Integrado PWA",
+    "host": "Servidor Debian",
+    "description": "Central unificada que junta Home Assistant, MQTT, Servidores, E-mails IA, Nubank, Inventário IoT, OmniRoute e configurações num único painel.",
+    "url": "http://100.112.218.88:6807/",
+    "category": "Centrais de Comando",
     "icon": "server",
     "status": "ready"
   },
   {
-    "id": "debian-portainer",
-    "name": "Portainer Docker · Debian",
-    "description": "Gerenciador visual dos containers, imagens, volumes e redes Docker do servidor doméstico Debian",
-    "url": "https://100.112.218.88:9443/",
-    "category": "Servidores",
-    "icon": "server",
+    "id": "snake-cloudflare",
+    "name": "Snake Cloudflare Edge Hub",
+    "role": "Banco D1 SQL, KV & Workers",
+    "host": "Cloudflare Edge",
+    "description": "Painel da sua infraestrutura na borda da Cloudflare: consulta o banco de dados D1 SQL, armazenamento KV e APIs serverless.",
+    "url": "https://projeto-snake-cloudflare.pages.dev/",
+    "category": "Centrais de Comando",
+    "icon": "cloud",
     "status": "ready"
   },
   {
-    "id": "debian-uptime-kuma",
-    "name": "Uptime Kuma · Monitoramento",
-    "description": "Monitor visual de uptime e disponibilidade dos serviços locais, VPS Oracle e dispositivos de rede",
-    "url": "http://100.112.218.88:3001/",
-    "category": "Servidores",
-    "icon": "globe",
-    "status": "ready"
-  },
-  {
-    "id": "debian-filebrowser",
-    "name": "FileBrowser · Arquivos Web (M:)",
-    "description": "Gerenciador de arquivos web para navegar, subir e baixar arquivos do servidor Debian direto pelo navegador",
-    "url": "http://100.112.218.88:5000/",
-    "category": "Servidores",
-    "icon": "server",
-    "status": "ready"
-  },
-  {
-    "id": "debian-dozzle",
-    "name": "Dozzle · Logs Docker ao Vivo",
-    "description": "Visualizador de logs em streaming em tempo real de todos os containers Docker do servidor Debian",
-    "url": "http://100.112.218.88:9999/",
-    "category": "Servidores",
-    "icon": "code",
-    "status": "ready"
-  },
-  {
-    "id": "home-assistant",
-    "name": "Home Assistant",
-    "description": "Central de automação residencial, dashboards Lovelace, dispositivos Tuya, sensores e integração Alexa",
-    "url": "https://ha.157-151-15-149.sslip.io/",
-    "category": "Automação",
-    "icon": "home",
-    "status": "ready"
-  },
-  {
-    "id": "debian-homeassistant",
-    "name": "Home Assistant Local (Debian)",
-    "description": "Instância local do Home Assistant no servidor Debian com operação independente da internet",
-    "url": "http://100.112.218.88:8123/",
-    "category": "Automação",
-    "icon": "home",
-    "status": "ready"
-  },
-  {
-    "id": "debian-n8n",
-    "name": "n8n Automação Local (Debian)",
-    "description": "Fluxos visuais de automação e webhooks rodando localmente em Docker no servidor Debian",
-    "url": "http://100.112.218.88:5678/",
-    "category": "Automação",
-    "icon": "workflow",
-    "status": "ready"
-  },
-  {
-    "id": "central-iot",
-    "name": "Central IoT e Telemetria",
-    "description": "Broker MQTT e monitoramento em tempo real dos dispositivos IoT, sensores, ESP32 e relés RF 433MHz",
-    "url": "https://iot.157-151-15-149.sslip.io/",
-    "category": "Dispositivos",
-    "icon": "wifi",
-    "status": "ready"
-  },
-  {
-    "id": "debian-adguard",
-    "name": "AdGuard Home · DNS & Bloqueio",
-    "description": "Servidor DNS local e bloqueador de anúncios/rastreadores no servidor Debian",
-    "url": "http://100.112.218.88:3000/",
-    "category": "Dispositivos",
-    "icon": "wifi",
-    "status": "ready"
-  },
-  {
-    "id": "api-rede",
-    "name": "OmniNet Controle de Rede",
-    "description": "Gestão multi-redes, roteadores locais ou em nuvem, radar L2/L3, ping seguro e auditoria de portas",
-    "url": "https://rede.157-151-15-149.sslip.io/",
-    "category": "Dispositivos",
-    "icon": "wifi",
+    "id": "snake-workstation",
+    "name": "Snake Workstation v3.0 (App Desktop)",
+    "role": "Programa Nativo do Notebook",
+    "host": "Notebook Local",
+    "description": "Aplicativo desktop em Python (PySide6) instalado no seu notebook que abre todos estes painéis sem barra de navegador, com terminal SSH e medidores ao vivo.",
+    "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/14_Snake_Desktop_App/PAINEL.md",
+    "category": "Centrais de Comando",
+    "icon": "terminal",
     "status": "ready"
   },
   {
     "id": "omniroute",
-    "name": "OmniRoute IA Gateway (Unificado)",
-    "description": "Gateway único de IA unificando Gemini, OpenRouter Free, Groq e DeepSeek em combos com fallback automático",
+    "name": "OmniRoute IA Gateway",
+    "role": "Roteador Central de Todas as IAs",
+    "host": "VPS Oracle",
+    "description": "Cérebro de IA na nuvem que junta Gemini, OpenRouter, Groq e DeepSeek num único lugar com troca automática quando a cota de uma IA acaba.",
     "url": "https://ai.157-151-15-149.sslip.io/",
-    "category": "IA",
+    "category": "IA & Agentes",
     "icon": "brain",
-    "status": "ready"
-  },
-  {
-    "id": "artemis-mobile",
-    "name": "Artemis Mobile Agent UI",
-    "description": "Interface web nativa (Angular 19 + Admin Console) para testes autônomos, espelhamento scrcpy ao vivo, replay de passos e inspeção de traces em celulares Android",
-    "url": "http://localhost:8000/",
-    "category": "IA",
-    "icon": "smartphone",
     "status": "ready"
   },
   {
     "id": "antigravity-chat",
     "name": "Antigravity Chat Web",
-    "description": "Interface protegida com biometria conectada ao OmniRoute Unificado e às 72+ conversas e projetos da VPS",
+    "role": "Chat com suas 105+ Conversas e IAs",
+    "host": "VPS Oracle",
+    "description": "Seu chat web particular (protegido por biometria) para conversar com o OmniRoute e consultar todo o histórico e memória do Antigravity pelo celular ou PC.",
     "url": "https://chat.157-151-15-149.sslip.io/",
-    "category": "IA",
+    "category": "IA & Agentes",
     "icon": "brain",
     "status": "ready"
   },
   {
+    "id": "prompt-studio",
+    "name": "Prompt Studio IA",
+    "role": "Transforma Ideias em Super-Prompts",
+    "host": "VPS Oracle",
+    "description": "Você digita uma ideia simples e a IA faz perguntas, audita a nota de 0 a 100 e gera um prompt profissional completo pronto para usar.",
+    "url": "https://prompt.157-151-15-149.sslip.io/",
+    "category": "IA & Agentes",
+    "icon": "brain",
+    "status": "ready"
+  },
+  {
+    "id": "artemis-mobile",
+    "name": "Artemis Mobile (Automação Android)",
+    "role": "Controla e Testa o Celular com IA",
+    "host": "Notebook Local",
+    "description": "Painel em português onde você digita o que quer fazer no celular Android (via USB/ADB) e a IA toca na tela, executa tarefas e grava cada passo.",
+    "url": "http://localhost:8000/",
+    "category": "IA & Agentes",
+    "icon": "smartphone",
+    "status": "ready"
+  },
+  {
+    "id": "debian-browser-use",
+    "name": "BrowserUse Studio v2.0 (Agente Web)",
+    "role": "Robô que Navega em Sites 24h",
+    "host": "Servidor Debian",
+    "description": "Agente com navegador próprio no servidor Debian: você manda uma tarefa web, assiste a tela dele ao vivo (noVNC) e ele clica e preenche sites sozinho.",
+    "url": "http://100.112.218.88:8095/",
+    "category": "IA & Agentes",
+    "icon": "globe",
+    "status": "ready"
+  },
+  {
     "id": "email-classifier",
-    "name": "Classificador de Emails IA",
-    "description": "Painel de triagem automática do Gmail, categorias, detecção anti-fraude e fallback via OmniRoute",
+    "name": "Organizador de E-mails IA (Gmail)",
+    "role": "Triagem e Anti-Fraude do Gmail",
+    "host": "VPS Oracle",
+    "description": "Lê seus e-mails novos do Gmail, classifica por categoria (Financeiro, Urgente, Promoções), detecta golpes e mostra estatísticas.",
     "url": "https://email.157-151-15-149.sslip.io/",
-    "category": "IA",
+    "category": "IA & Agentes",
     "icon": "workflow",
     "status": "ready"
   },
   {
     "id": "jarvis-voice",
-    "name": "Jarvis Voice & Mi Box",
-    "description": "Assistente de voz residencial (Python + Edge TTS) integrado à Mi Box da sala, Home Assistant e Central IoT",
+    "name": "Jarvis Voz & Servidor Mi Box",
+    "role": "Assistente de Voz da Sala (TV Box)",
+    "host": "VPS Oracle",
+    "description": "Painel do assistente de voz Jarvis conectado à Mi Box da sala, com geração de fala natural (Edge TTS) e comandos para a casa inteligente.",
     "url": "https://voice.157-151-15-149.sslip.io/",
-    "category": "IA",
+    "category": "IA & Agentes",
     "icon": "brain",
     "status": "ready"
   },
   {
     "id": "bot-cloud-agent",
     "name": "Bot Cloud Agent (@Aliexpress20_Bot)",
-    "description": "Agente DevOps autônomo na VPS (OmniRoute + MCP) agora unificado com o Catálogo de 90 Sensores e Módulos",
+    "role": "Bot DevOps & Catálogo 90 Sensores",
+    "host": "VPS Oracle",
+    "description": "Seu bot no Telegram que controla a VPS Oracle por mensagem, conversa com a IA da nuvem e consulta preços dos 90 sensores e módulos Arduino/ESP32.",
     "url": "https://t.me/Aliexpress20_Bot",
-    "category": "IA",
+    "category": "IA & Agentes",
     "icon": "brain",
     "status": "ready"
   },
   {
-    "id": "bot-gastos-telegram",
-    "name": "Bot Gastos Financeiro (Cloudflare Worker)",
-    "description": "Bot @OrgfinanceiraBot + API serverless em Cloudflare Workers com banco D1 SQL para controle de gastos e metas",
-    "url": "https://bot-gastos-telegram.bot-gastos-telegram.workers.dev/",
-    "category": "Automação",
+    "id": "home-assistant",
+    "name": "Home Assistant (Nuvem Principal)",
+    "role": "Controle da Casa & Alexa (Externo)",
+    "host": "VPS Oracle",
+    "description": "Interruptores, lâmpadas Tuya, sensores, câmeras e integração com a Alexa acessíveis de qualquer lugar pela internet.",
+    "url": "https://ha.157-151-15-149.sslip.io/",
+    "category": "Casa Inteligente & IoT",
+    "icon": "home",
+    "status": "ready"
+  },
+  {
+    "id": "debian-homeassistant",
+    "name": "Home Assistant (Local na Casa)",
+    "role": "Controle da Casa Offline no Debian",
+    "host": "Servidor Debian",
+    "description": "Segunda central do Home Assistant rodando dentro de casa no servidor Debian: funciona na rede local mesmo se a internet cair.",
+    "url": "http://100.112.218.88:8123/",
+    "category": "Casa Inteligente & IoT",
+    "icon": "home",
+    "status": "ready"
+  },
+  {
+    "id": "central-iot",
+    "name": "Central IoT & Controles RF 433MHz",
+    "role": "Sensores MQTT, ESP32 & Botões RF",
+    "host": "VPS Oracle",
+    "description": "Monitora em tempo real todos os microcontroladores ESP32, mensagens MQTT, relés e botões de controle remoto RF 433MHz.",
+    "url": "https://iot.157-151-15-149.sslip.io/",
+    "category": "Casa Inteligente & IoT",
+    "icon": "wifi",
+    "status": "ready"
+  },
+  {
+    "id": "esphome",
+    "name": "ESPHome Dashboard (Firmwares)",
+    "role": "Compilar e Atualizar ESP32 via Wi-Fi",
+    "host": "VPS Oracle",
+    "description": "Painel para editar o código YAML e enviar atualizações sem fio (OTA) para as placas ESP32 e ESP8266 (via túnel SSH na porta 2027).",
+    "url": "http://localhost:2027/",
+    "category": "Casa Inteligente & IoT",
+    "icon": "chip",
+    "status": "ready"
+  },
+  {
+    "id": "esp-lab-3d",
+    "name": "Laboratório 3D ESP32 & Sensores",
+    "role": "Simulador 3D de Fiação Pino a Pino",
+    "host": "GitHub Web",
+    "description": "Bancada 3D interativa que mostra exatamente em qual pino ligar cada fio dos seus sensores e módulos no ESP32 antes de montar na prática.",
+    "url": "https://matheusantunesx123-hub.github.io/esp32-3d-lab/",
+    "category": "Casa Inteligente & IoT",
+    "icon": "chip",
+    "status": "ready"
+  },
+  {
+    "id": "arduino-uno-esp01s-ha",
+    "name": "Nó Arduino Uno + Ponte Wi-Fi ESP-01S",
+    "role": "Documentação e Código do Hardware",
+    "host": "Notebook Local",
+    "description": "Esquema de ligação e código do Arduino Uno usando o adaptador ESP-01S para enviar leituras de sensores via MQTT ao Home Assistant.",
+    "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/15_Arduino_Uno_ESP01S_HA/PAINEL.md",
+    "category": "Casa Inteligente & IoT",
+    "icon": "chip",
+    "status": "ready"
+  },
+  {
+    "id": "aws-lambda-alexa",
+    "name": "Ponte AWS Lambda (Skill Alexa)",
+    "role": "Conexão de Voz Alexa <-> Home Assistant",
+    "host": "Cloudflare Edge",
+    "description": "Console da função gratuita na AWS que faz a ponte oficial entre os comandos de voz da sua Echo Dot (Alexa) e o Home Assistant.",
+    "url": "https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions/HomeAssistantAlexa",
+    "category": "Casa Inteligente & IoT",
     "icon": "cloud",
     "status": "ready"
   },
   {
+    "id": "debian-portainer",
+    "name": "Portainer (Containers Docker)",
+    "role": "Ligar/Reiniciar Containers do Debian",
+    "host": "Servidor Debian",
+    "description": "Gerenciador visual para ver, ligar, parar e atualizar todos os 14 sistemas em Docker que rodam no seu servidor Debian.",
+    "url": "https://100.112.218.88:9443/",
+    "category": "Servidores, Rede & Automação",
+    "icon": "server",
+    "status": "ready"
+  },
+  {
+    "id": "debian-cockpit",
+    "name": "Cockpit Linux (Administração Debian)",
+    "role": "CPU, Discos e Terminal Web do Debian",
+    "host": "Servidor Debian",
+    "description": "Painel oficial do sistema Linux Debian para ver temperatura, uso de disco, rede e abrir o terminal do servidor direto no navegador.",
+    "url": "https://100.112.218.88:9090/",
+    "category": "Servidores, Rede & Automação",
+    "icon": "server",
+    "status": "ready"
+  },
+  {
+    "id": "debian-uptime-kuma",
+    "name": "Uptime Kuma (Monitor de Quedas)",
+    "role": "Alerta se Algum Serviço Cair",
+    "host": "Servidor Debian",
+    "description": "Vigora 24h por dia todos os seus sites, bots e servidores (Oracle e Debian), mostrando gráficos de disponibilidade e avisando se algo ficar offline.",
+    "url": "http://100.112.218.88:3001/",
+    "category": "Servidores, Rede & Automação",
+    "icon": "globe",
+    "status": "ready"
+  },
+  {
+    "id": "debian-dozzle",
+    "name": "Dozzle (Logs ao Vivo do Debian)",
+    "role": "Ver Erros e Mensagens dos Containers",
+    "host": "Servidor Debian",
+    "description": "Mostra na tela, em tempo real, o que cada programa em Docker do servidor Debian está escrevendo no log para facilitar diagnósticos.",
+    "url": "http://100.112.218.88:9999/",
+    "category": "Servidores, Rede & Automação",
+    "icon": "code",
+    "status": "ready"
+  },
+  {
+    "id": "api-rede",
+    "name": "OmniNet (Radar e Controle de Rede)",
+    "role": "Scanner de Wi-Fi, Roteador & Portas",
+    "host": "VPS Oracle",
+    "description": "Descobre todos os aparelhos conectados na rede/roteador, testa ping, verifica portas abertas e monitora a latência.",
+    "url": "https://rede.157-151-15-149.sslip.io/",
+    "category": "Servidores, Rede & Automação",
+    "icon": "wifi",
+    "status": "ready"
+  },
+  {
+    "id": "debian-adguard",
+    "name": "AdGuard Home (Bloqueador de Anúncios)",
+    "role": "DNS Rápido sem Propaganda na Rede",
+    "host": "Servidor Debian",
+    "description": "Filtra e bloqueia propagandas, rastreadores e sites maliciosos automaticamente para os aparelhos que usam o DNS do seu servidor Debian.",
+    "url": "http://100.112.218.88:3000/",
+    "category": "Servidores, Rede & Automação",
+    "icon": "wifi",
+    "status": "ready"
+  },
+  {
     "id": "n8n",
-    "name": "N8N Automações",
-    "description": "Fluxos de automação via webhooks HTTPS (editor protegido localmente via túnel SSH)",
+    "name": "n8n Automações (Nuvem Oracle)",
+    "role": "Fluxos Automáticos e Webhooks Externos",
+    "host": "VPS Oracle",
+    "description": "Conecta diferentes aplicativos e webhooks públicos na internet usando fluxos visuais de blocos na VPS Oracle.",
     "url": "https://n8n.157-151-15-149.sslip.io/",
-    "category": "Automação",
+    "category": "Servidores, Rede & Automação",
+    "icon": "workflow",
+    "status": "ready"
+  },
+  {
+    "id": "debian-n8n",
+    "name": "n8n Automações (Local no Debian)",
+    "role": "Fluxos Automáticos com 8GB RAM",
+    "host": "Servidor Debian",
+    "description": "Versão local do n8n rodando no servidor Debian com muito mais memória livre para automações pesadas na sua rede.",
+    "url": "http://100.112.218.88:5678/",
+    "category": "Servidores, Rede & Automação",
     "icon": "workflow",
     "status": "ready"
   },
   {
     "id": "cli-anything-hub",
     "name": "CLI-Anything Hub (103 Ferramentas)",
-    "description": "Central visual para instalar, controlar e adicionar 103 ferramentas CLI desktop (Draw.io, Obsidian, LibreOffice, ComfyUI, Ollama, etc.) integradas a agentes de IA",
+    "role": "Catálogo de Programas para a IA Usar",
+    "host": "Notebook Local",
+    "description": "Painel para ativar e gerenciar 103 programas de computador (LibreOffice, Draw.io, Obsidian, FFmpeg, Ollama) que a IA pode operar por linha de comando.",
     "url": "cli_hub.html",
-    "category": "Automação",
+    "category": "Servidores, Rede & Automação",
     "icon": "terminal",
     "status": "ready"
   },
   {
-    "id": "debian-browser-use",
-    "name": "BrowserUse Studio v2.0 · Agente Web (Debian 24/7)",
-    "description": "Studio Web + API REST (SQLite WAL, fila serial, cancelamento, webhooks n8n/HA, screenshots, auth X-Token, multi-LLM OmniRoute/Gemini/OpenAI-compat e tela noVNC)",
-    "url": "http://100.112.218.88:8095/",
-    "category": "IA",
-    "icon": "globe",
+    "id": "snake-bridge",
+    "name": "Snake Bridge (Controle Remoto do PC)",
+    "role": "Controlar Notebook/iPhone/Tablet",
+    "host": "Notebook Local",
+    "description": "Ponte que permite transferir arquivos e enviar comandos entre seu Notebook Windows, iPhone, Tablet Galaxy Tab S7 FE e servidores.",
+    "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/snake-bridge/PAINEL.md",
+    "category": "Servidores, Rede & Automação",
+    "icon": "smartphone",
     "status": "ready"
   },
   {
-    "id": "esphome",
-    "name": "ESPHome Dashboard",
-    "description": "Compilação e gravação OTA de microcontroladores ESP32 e ESP8266 via túnel SSH (porta 2027)",
-    "url": "http://localhost:2027/",
-    "category": "Dispositivos",
-    "icon": "chip",
-    "status": "ready"
-  },
-  {
-    "id": "esp-lab-3d",
-    "name": "ESP32 & Módulos 3D Lab Studio",
-    "description": "Simulador 3D interativo (Three.js) com pinout 1:1 fiel, fiação pino a pino e guia prático de montagem",
-    "url": "https://matheusantunesx123-hub.github.io/esp32-3d-lab/",
-    "category": "Projetos",
-    "icon": "chip",
-    "status": "ready"
-  },
-  {
-    "id": "aws-lambda-alexa",
-    "name": "AWS Lambda Alexa",
-    "description": "Função serverless HomeAssistantAlexa que conecta o Home Assistant à skill Alexa Smart Home",
-    "url": "https://us-east-1.console.aws.amazon.com/lambda/home?region=us-east-1#/functions/HomeAssistantAlexa",
-    "category": "Automação",
-    "icon": "cloud",
+    "id": "vaultwarden",
+    "name": "Vaultwarden (Cofre de Senhas)",
+    "role": "Gerenciador de Senhas Criptografado",
+    "host": "VPS Oracle",
+    "description": "Seu servidor privado compatível com o aplicativo Bitwarden para guardar todas as suas senhas com criptografia de ponta a ponta.",
+    "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/vaultwarden/PAINEL.md",
+    "category": "Servidores, Rede & Automação",
+    "icon": "server",
     "status": "ready"
   },
   {
     "id": "cloudflare-dashboard",
-    "name": "Cloudflare Dashboard (Edge)",
-    "description": "Painel Cloudflare: Workers, Pages, bancos D1, KV e DNS do ecossistema Projeto Snake",
+    "name": "Console Oficial Cloudflare",
+    "role": "Gerenciar Workers, Pages e DNS",
+    "host": "Cloudflare Edge",
+    "description": "Acesso direto à sua conta oficial da Cloudflare para ver estatísticas de tráfego, domínios, Workers e bancos D1.",
     "url": "https://dash.cloudflare.com/",
-    "category": "Servidores",
+    "category": "Servidores, Rede & Automação",
     "icon": "cloud",
     "status": "ready"
   },
   {
     "id": "oracle-cloud",
-    "name": "Oracle Cloud Console",
-    "description": "Console oficial da infraestrutura Always Free na nuvem Oracle (Vinhedo)",
+    "name": "Console Oficial Oracle Cloud",
+    "role": "Gerenciar Máquina Virtual e Rede OCI",
+    "host": "VPS Oracle",
+    "description": "Painel oficial da Oracle Cloud (região Vinhedo) para gerenciar firewall, chaves SSH e instâncias Always Free.",
     "url": "https://cloud.oracle.com/",
-    "category": "Servidores",
+    "category": "Servidores, Rede & Automação",
     "icon": "server",
     "status": "ready"
   },
   {
-    "id": "duckdns",
-    "name": "DuckDNS Domínios",
-    "description": "Gerenciamento de DNS dinâmico gratuito vinculado aos serviços e Alexa",
-    "url": "https://www.duckdns.org/",
-    "category": "Servidores",
+    "id": "telegram-cloud",
+    "name": "Telegram Cloud (Nuvem Ilimitada)",
+    "role": "Seus Backups, Faturas e Arquivos",
+    "host": "VPS Oracle",
+    "description": "Painel web da sua nuvem pessoal gratuita e ilimitada que guarda arquivos do PC, Drive, MEGA e faturas em tópicos organizados no Telegram.",
+    "url": "https://nuvem.157-151-15-149.sslip.io/",
+    "category": "Nuvem, Arquivos & Finanças",
+    "icon": "cloud",
+    "status": "ready"
+  },
+  {
+    "id": "debian-siyuan",
+    "name": "SiYuan Notes (Caderno & Segunda Mente)",
+    "role": "Anotações, Resumos, Tabelas e Mapas",
+    "host": "Servidor Debian",
+    "description": "Seu aplicativo completo de notas estilo Notion/Obsidian rodando no servidor Debian para organizar estudos, faculdade e documentos.",
+    "url": "http://100.112.218.88:6806/",
+    "category": "Nuvem, Arquivos & Finanças",
+    "icon": "globe",
+    "status": "ready"
+  },
+  {
+    "id": "debian-filebrowser",
+    "name": "FileBrowser (Arquivos do Servidor Debian)",
+    "role": "Pastas do Disco de 500GB pelo Navegador",
+    "host": "Servidor Debian",
+    "description": "Abre o HD de 500GB (Disco M:) do seu servidor Debian como se fosse um Google Drive para enviar, baixar e abrir arquivos de qualquer lugar.",
+    "url": "http://100.112.218.88:5000/",
+    "category": "Nuvem, Arquivos & Finanças",
+    "icon": "server",
+    "status": "ready"
+  },
+  {
+    "id": "bot-gastos-telegram",
+    "name": "Painel & Bot de Gastos (@OrgfinanceiraBot)",
+    "role": "Controle Financeiro Pessoal D1 SQL",
+    "host": "Cloudflare Edge",
+    "description": "Registra despesas pessoais pelo Telegram e salva no banco de dados Cloudflare D1 para acompanhar suas metas financeiras.",
+    "url": "https://bot-gastos-telegram.bot-gastos-telegram.workers.dev/",
+    "category": "Nuvem, Arquivos & Finanças",
+    "icon": "cloud",
+    "status": "ready"
+  },
+  {
+    "id": "spotify-maquina-do-tempo",
+    "name": "Spotify · Máquina do Tempo Musical",
+    "role": "Arquivo Mensal & Exportador Instagram",
+    "host": "GitHub Web",
+    "description": "Máquina do Tempo mensal real do Spotify desde Agosto/2026 com minutos ouvidos, rankings, horários de pico e exportador em 1080px para Stories, Feed e Carrossel.",
+    "url": "https://matheusantunesx123-hub.github.io/Site-Pessoal-ProgWeb-2026/maquina-do-tempo/",
+    "category": "Sites & Projetos Web",
+    "icon": "music",
+    "status": "ready"
+  },
+  {
+    "id": "spotify-dashboard-live",
+    "name": "Spotify · Painel de Estatísticas Live",
+    "role": "Ranking de Artistas e Músicas Ouvidas",
+    "host": "GitHub Web",
+    "description": "Painel atualizado automaticamente com os dados da sua API do Spotify mostrando seus artistas mais ouvidos, histórico mensal e faixas recentes.",
+    "url": "https://matheusantunesx123-hub.github.io/Site-Pessoal-ProgWeb-2026/spotify/",
+    "category": "Sites & Projetos Web",
+    "icon": "globe",
+    "status": "ready"
+  },
+  {
+    "id": "projeto-lumen",
+    "name": "Plataforma LUMEN (Saúde Mental)",
+    "role": "Sistema Web PHP + MySQL",
+    "host": "Servidor Debian",
+    "description": "Aplicação web completa de apoio à saúde mental hospedada no servidor Debian (porta 8085) com endereço público via Cloudflare Pages.",
+    "url": "https://projeto-lumen.pages.dev/",
+    "category": "Sites & Projetos Web",
     "icon": "globe",
     "status": "ready"
   },
   {
     "id": "site-progweb-2026",
-    "name": "Site Pessoal ProgWeb 2026",
-    "description": "Projeto web pessoal e acadêmico de Programação Web hospedado no GitHub Pages",
+    "name": "Site Pessoal · Programação Web 2026",
+    "role": "Portal Acadêmico e Diário Web",
+    "host": "GitHub Web",
+    "description": "Site completo desenvolvido para a disciplina de Programação Web com projetos práticos, diário interativo e integração com o Spotify.",
     "url": "https://matheusantunesx123-hub.github.io/Site-Pessoal-ProgWeb-2026/",
-    "category": "Projetos",
+    "category": "Sites & Projetos Web",
     "icon": "globe",
     "status": "ready"
   },
   {
     "id": "site-pessoal",
-    "name": "Site Pessoal Portfólio",
-    "description": "Website pessoal e portfólio profissional hospedado no GitHub Pages",
+    "name": "Portfólio Pessoal Matheus Gabriel",
+    "role": "Currículo e Apresentação Profissional",
+    "host": "GitHub Web",
+    "description": "Página oficial de portfólio apresentando seus projetos de engenharia, automação, servidores e desenvolvimento web.",
     "url": "https://matheusantunesx123-hub.github.io/Site-Pessoal/",
-    "category": "Projetos",
+    "category": "Sites & Projetos Web",
     "icon": "globe",
     "status": "ready"
   },
   {
     "id": "ifeventos",
     "name": "IF Eventos (IF Sudeste MG)",
-    "description": "Sistema web de eventos acadêmicos e inscrições do campus",
+    "role": "Portal de Eventos do Campus",
+    "host": "GitHub Web",
+    "description": "Acesso rápido ao sistema de eventos acadêmicos e certificados do IF Sudeste MG.",
     "url": "https://ifeventos.lucianovilasboas.com.br/eventos/",
-    "category": "Projetos",
+    "category": "Sites & Projetos Web",
     "icon": "globe",
     "status": "ready"
   },
   {
     "id": "github-painel",
-    "name": "GitHub Repositório Painel",
-    "description": "Código-fonte, links e versionamento desta Área de Comando",
+    "name": "GitHub · Código desta Área de Comando",
+    "role": "Repositório Oficial do Painel",
+    "host": "GitHub Web",
+    "description": "Repositório no GitHub onde fica hospedado o site público desta Área de Comando.",
     "url": "https://github.com/matheusantunesx123-hub/painel",
-    "category": "Código",
+    "category": "Sites & Projetos Web",
     "icon": "code",
     "status": "ready"
   },
   {
     "id": "github-perfil",
-    "name": "GitHub Perfil Completo",
-    "description": "Perfil com todos os repositórios (esp32-3d-lab, fotos-telegram, sites pessoais e hubs)",
+    "name": "GitHub · Todos os Seus Repositórios",
+    "role": "Perfil Completo @matheusantunesx123-hub",
+    "host": "GitHub Web",
+    "description": "Página principal do seu GitHub com todos os códigos-fonte publicados.",
     "url": "https://github.com/matheusantunesx123-hub",
-    "category": "Código",
+    "category": "Sites & Projetos Web",
     "icon": "code",
-    "status": "ready"
-  },
-  {
-    "id": "graphify-mapa-codigo",
-    "name": "Graphify · Mapa de Código",
-    "description": "Grafo AST local de dependências do Projeto_Snake (Zero LLM · MCP + Skill). Mapa interativo privado via Tailscale/Debian ou local",
-    "url": "http://100.112.218.88:8088/graphify/",
-    "category": "Código",
-    "icon": "code",
-    "status": "ready"
-  },
-  {
-    "id": "_omniroute_data",
-    "name": "_Omniroute_Data",
-    "description": "Projeto _omniroute_data",
-    "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/_omniroute_data/PAINEL.md",
-    "category": "Projetos Oracle",
-    "icon": "server",
-    "status": "ready"
-  },
-  {
-    "id": "_oracle_root_configs",
-    "name": "_Oracle_Root_Configs",
-    "description": "Projeto _oracle_root_configs",
-    "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/_oracle_root_configs/PAINEL.md",
-    "category": "Projetos Oracle",
-    "icon": "server",
-    "status": "ready"
-  },
-  {
-    "id": "cli-anything",
-    "name": "Cli Anything",
-    "description": "Projeto cli-anything",
-    "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/cli-anything/PAINEL.md",
-    "category": "Projetos Oracle",
-    "icon": "server",
-    "status": "ready"
-  },
-  {
-    "id": "filebrowser",
-    "name": "Filebrowser",
-    "description": "Projeto filebrowser",
-    "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/filebrowser/PAINEL.md",
-    "category": "Projetos Oracle",
-    "icon": "server",
-    "status": "ready"
-  },
-  {
-    "id": "snake-bridge",
-    "name": "Snake Bridge",
-    "description": "Projeto snake-bridge",
-    "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/snake-bridge/PAINEL.md",
-    "category": "Projetos Oracle",
-    "icon": "server",
-    "status": "ready"
-  },
-  {
-    "id": "telegram-cloud",
-    "name": "Telegram Cloud · Nuvem Pessoal",
-    "description": "Nuvem pessoal ilimitada no Telegram com tópicos/canais automáticos, painel web protegido, chunking > 19 MB e sync de faturas, e-mails, VPS e PC.",
-    "url": "https://nuvem.157-151-15-149.sslip.io/",
-    "category": "Servidores",
-    "icon": "cloud",
-    "status": "ready"
-  },
-  {
-    "id": "vaultwarden",
-    "name": "Vaultwarden",
-    "description": "Projeto vaultwarden",
-    "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/vaultwarden/PAINEL.md",
-    "category": "Projetos Oracle",
-    "icon": "server",
-    "status": "ready"
-  },
-  {
-    "id": "_antigravity_hub",
-    "name": "_Antigravity_Hub",
-    "description": "Projeto _antigravity_hub",
-    "url": "file:///C:/Users/mathe/Desktop/Projeto_Snake/03_Oracle_Projetos_PM2/_antigravity_hub/PAINEL.md",
-    "category": "Projetos Oracle",
-    "icon": "server",
     "status": "ready"
   }
 ];
-
     let activeCategory = "Todas";
+    let activeHost = "Todos os Locais";
 
+    function inferHost(item) {
+      if (item.host) return item.host;
+      const u = (item.url || "").toLowerCase();
+      if (u.includes("157-151-15-149") || u.includes("cloud.oracle")) return "VPS Oracle";
+      if (u.includes("100.112.218.88")) return "Servidor Debian";
+      if (u.includes("localhost") || u.startsWith("file:") || u.endsWith(".html")) return "Notebook Local";
+      if (u.includes("cloudflare") || u.includes("workers.dev") || u.includes("pages.dev")) return "Cloudflare Edge";
+      return "GitHub Web";
+    }
 
+    function getHostBadgeClass(host) {
+      if (host.includes("Oracle")) return "host-oracle";
+      if (host.includes("Debian")) return "host-debian";
+      if (host.includes("Notebook") || host.includes("Local")) return "host-local";
+      return "host-edge";
+    }
 
     function loadLocalOverrides() {
-
       try {
-
         return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-
       } catch {
-
         return {};
-
       }
-
     }
-
-
 
     function saveLocalOverrides(map) {
-
       localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
-
     }
-
-
 
     function getMergedLinks() {
-
       const overrides = loadLocalOverrides();
-
       const map = new Map();
 
-
-
       for (const item of baseLinks) {
-
+        if (!item.id || item.id.startsWith("_")) continue;
         const override = overrides[item.id];
-
         if (override && override._deleted) continue;
-
         map.set(item.id, override ? { ...item, ...override, _local: true } : { ...item });
-
       }
-
       for (const [id, item] of Object.entries(overrides)) {
-
-        if (!item._deleted && !map.has(id)) {
-
+        if (!item._deleted && !map.has(id) && !id.startsWith("_")) {
           map.set(id, { ...item, id, _local: true });
-
         }
-
       }
-
       return Array.from(map.values());
-
     }
-
-
 
     function handleDirectRedirect(links) {
-
       const params = new URLSearchParams(window.location.search);
-
       const go = params.get("go") || window.location.hash.replace(/^#go=/, "");
-
       if (!go) return;
-
       const target = links.find((l) => l.id === go && l.url);
-
       if (target) window.location.replace(target.url);
-
     }
-
-
 
     function renderFilters(links) {
-
-      const categories = ["Todas", ...new Set(links.map((l) => l.category || "Projetos"))];
+      const orderedCats = Object.keys(CATEGORY_META);
+      const dynamicCats = [...new Set(links.map((l) => l.category || "Sites & Projetos Web"))];
+      const allCats = ["Todas", ...orderedCats.filter(c => dynamicCats.includes(c)), ...dynamicCats.filter(c => !orderedCats.includes(c))];
 
       const container = document.getElementById("filters");
-
       container.innerHTML = "";
-
-
-
-      for (const cat of categories) {
-
+      for (const cat of allCats) {
         const btn = document.createElement("button");
-
         btn.className = `chip ${activeCategory === cat ? "active" : ""}`;
-
         btn.textContent = cat;
-
         btn.onclick = () => {
-
           activeCategory = cat;
-
           render();
-
         };
-
         container.appendChild(btn);
-
       }
 
+      const hosts = ["Todos os Locais", "VPS Oracle", "Servidor Debian", "Notebook Local", "Cloudflare Edge", "GitHub Web"];
+      const hostContainer = document.getElementById("host-filters");
+      hostContainer.innerHTML = "";
+      for (const h of hosts) {
+        const btn = document.createElement("button");
+        btn.className = `chip ${activeHost === h ? "active" : ""}`;
+        btn.textContent = h;
+        btn.onclick = () => {
+          activeHost = h;
+          render();
+        };
+        hostContainer.appendChild(btn);
+      }
     }
 
+    function createCardElement(item) {
+      const hasUrl = Boolean(item.url && item.url.trim());
+      const card = document.createElement("a");
+      card.className = "card";
+      card.href = hasUrl ? item.url : "#";
+      if (hasUrl) {
+        card.target = "_blank";
+        card.rel = "noopener noreferrer";
+      } else {
+        card.onclick = (e) => {
+          e.preventDefault();
+          openModal(item);
+        };
+      }
 
+      const iconSvg = ICONS[item.icon] || ICONS.globe;
+      const hostName = inferHost(item);
+      const hostClass = getHostBadgeClass(hostName);
+      const roleText = item.role || item.category || "Painel Integrado";
+      const cleanUrl = item.url
+        ? item.url.replace(/^https?:\/\//, "").replace(/^file:\/\/\/C:\/Users\/mathe\/Desktop\/Projeto_Snake\//i, "Projeto_Snake/")
+        : "Sem URL";
+
+      card.innerHTML = `
+        <div class="card-head">
+          <div class="icon-box">${iconSvg}</div>
+          <div class="badge-group">
+            <span class="badge ${hostClass}">Onde roda: ${escapeHtml(hostName)}</span>
+            <span class="badge ready">Ativo</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="role-tag">${escapeHtml(roleText)}</span>
+          <h2>
+            <span>${escapeHtml(item.name)}</span>
+            <span class="ext-icon">${ICONS.external}</span>
+          </h2>
+          <p>${escapeHtml(item.description || "")}</p>
+        </div>
+        <div class="card-foot">
+          <span class="url-chip" title="${escapeHtml(item.url || "")}">${escapeHtml(cleanUrl)}</span>
+          <div class="card-btns">
+            <button type="button" class="mini-btn edit-btn">Editar</button>
+          </div>
+        </div>
+      `;
+
+      card.querySelector(".edit-btn").onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal(item);
+      };
+
+      return card;
+    }
 
     function render() {
-
       const links = getMergedLinks();
-
       renderFilters(links);
 
-
-
       const q = document.getElementById("search").value.trim().toLowerCase();
-
       const clearBtn = document.getElementById("clear-search");
-
       clearBtn.style.display = q ? "block" : "none";
 
-
-
       const filtered = links.filter((item) => {
-
-        const matchCat = activeCategory === "Todas" || (item.category || "Projetos") === activeCategory;
-
+        const itemCat = item.category || "Sites & Projetos Web";
+        const itemHost = inferHost(item);
+        const matchCat = activeCategory === "Todas" || itemCat === activeCategory;
+        const matchHost = activeHost === "Todos os Locais" || itemHost === activeHost;
         const matchText =
-
           !q ||
-
           item.name.toLowerCase().includes(q) ||
-
+          (item.role || "").toLowerCase().includes(q) ||
           (item.description || "").toLowerCase().includes(q) ||
-
           (item.url || "").toLowerCase().includes(q) ||
-
-          (item.category || "").toLowerCase().includes(q);
-
-        return matchCat && matchText;
-
+          itemCat.toLowerCase().includes(q) ||
+          itemHost.toLowerCase().includes(q);
+        return matchCat && matchHost && matchText;
       });
 
-
-
       const heroCount = document.getElementById("hero-count");
-
       if (heroCount) heroCount.textContent = `${filtered.length}/${links.length}`;
 
-
-
-      const grid = document.getElementById("grid");
-
-      grid.innerHTML = "";
-
-
+      const root = document.getElementById("grid");
+      root.innerHTML = "";
 
       if (filtered.length === 0) {
-
         const empty = document.createElement("div");
-
         empty.className = "empty-state";
-
-        empty.innerHTML = `<h3>Nenhum atalho encontrado</h3><p style="margin-top: 6px;">Tente buscar com outras palavras ou limpe os filtros.</p>`;
-
-        grid.appendChild(empty);
-
+        empty.innerHTML = `<h3>Nenhum painel encontrado</h3><p style="margin-top: 6px;">Tente buscar com outras palavras ou selecione "Todas" nos filtros acima.</p>`;
+        root.appendChild(empty);
         return;
-
       }
 
-
-
+      // Agrupa por categoria para visualização limpa e autoexplicativa
+      const groups = new Map();
       for (const item of filtered) {
+        const cat = item.category || "Sites & Projetos Web";
+        if (!groups.has(cat)) groups.set(cat, []);
+        groups.get(cat).push(item);
+      }
 
-        const hasUrl = Boolean(item.url && item.url.trim());
+      const sortedCategories = Array.from(groups.keys()).sort((a, b) => {
+        const oa = CATEGORY_META[a] ? CATEGORY_META[a].order : 99;
+        const ob = CATEGORY_META[b] ? CATEGORY_META[b].order : 99;
+        return oa - ob;
+      });
 
-        const card = document.createElement("a");
-
-        card.className = "card";
-
-        card.href = hasUrl ? item.url : "#";
-
-        if (hasUrl) {
-
-          card.target = "_blank";
-
-          card.rel = "noopener noreferrer";
-
-        } else {
-
-          card.onclick = (e) => {
-
-            e.preventDefault();
-
-            openModal(item);
-
-          };
-
-        }
-
-
-
-        const iconSvg = ICONS[item.icon] || ICONS.globe;
-
-
-
-        card.innerHTML = `
-
-          <div class="card-head">
-
-            <div class="icon-box">${iconSvg}</div>
-
-            <div class="badge-group">
-
-              <span class="badge category">${escapeHtml(item.category || "Projetos")}</span>
-
-              <span class="badge ready">Ativo</span>
-
-            </div>
-
-          </div>
-
-          <div class="card-body">
-
-            <h2>
-
-              <span>${escapeHtml(item.name)}</span>
-
-              <span class="ext-icon">${ICONS.external}</span>
-
-            </h2>
-
-            <p>${escapeHtml(item.description || "")}</p>
-
-          </div>
-
-          <div class="card-foot">
-
-            <span class="url-chip">${escapeHtml(item.url ? item.url.replace(/^https?:\/\//, '') : "Sem URL")}</span>
-
-            <div class="card-btns">
-
-              <button type="button" class="mini-btn edit-btn">Editar</button>
-
-            </div>
-
-          </div>
-
-        `;
-
-
-
-        card.querySelector(".edit-btn").onclick = (e) => {
-
-          e.preventDefault();
-
-          e.stopPropagation();
-
-          openModal(item);
-
+      for (const cat of sortedCategories) {
+        const items = groups.get(cat);
+        const meta = CATEGORY_META[cat] || {
+          title: cat,
+          subtitle: "Painéis e serviços integrados nesta categoria."
         };
 
-
-
-        grid.appendChild(card);
-
-      }
-
-    }
-
-
-
-    function escapeHtml(str) {
-
-      return String(str).replace(/[&<>"']/g, (c) => ({
-
-        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-
-      }[c]));
-
-    }
-
-
-
-    const modal = document.getElementById("modal");
-
-    const form = document.getElementById("link-form");
-
-
-
-    function openModal(item = null) {
-
-      document.getElementById("modal-title").textContent = item ? `Editar: ${item.name}` : "Novo Atalho";
-
-      document.getElementById("field-id").value = item ? item.id : "";
-
-      document.getElementById("field-name").value = item ? item.name : "";
-
-      document.getElementById("field-url").value = item ? item.url || "" : "";
-
-      document.getElementById("field-desc").value = item ? item.description || "" : "";
-
-      document.getElementById("field-cat").value = item ? (item.category || "Projetos") : "Projetos";
-
-      document.getElementById("btn-delete").style.display = item ? "inline-block" : "none";
-
-      modal.showModal();
-
-    }
-
-
-
-    document.getElementById("btn-add").onclick = () => openModal(null);
-
-    document.getElementById("btn-cancel").onclick = () => modal.close();
-
-
-
-    document.getElementById("btn-delete").onclick = () => {
-
-      const id = document.getElementById("field-id").value;
-
-      if (!id) return;
-
-      const overrides = loadLocalOverrides();
-
-      overrides[id] = { _deleted: true };
-
-      saveLocalOverrides(overrides);
-
-      modal.close();
-
-      render();
-
-    };
-
-
-
-    form.onsubmit = (e) => {
-
-      e.preventDefault();
-
-      const rawId = document.getElementById("field-id").value;
-
-      const name = document.getElementById("field-name").value.trim();
-
-      const id = rawId || name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || `link-${Date.now()}`;
-
-      const overrides = loadLocalOverrides();
-
-      overrides[id] = {
-
-        id,
-
-        name,
-
-        url: document.getElementById("field-url").value.trim(),
-
-        description: document.getElementById("field-desc").value.trim(),
-
-        category: document.getElementById("field-cat").value.trim() || "Projetos",
-
-        icon: "globe"
-
-      };
-
-      saveLocalOverrides(overrides);
-
-      modal.close();
-
-      render();
-
-    };
-
-
-
-    document.getElementById("btn-export").onclick = () => {
-
-      const payload = {
-
-        title: "Matheus Gabriel · Área de Comando",
-
-        subtitle: "Central única de acesso a todos os projetos, automações e servidores em nuvem",
-
-        links: getMergedLinks().map(({ _local, ...rest }) => rest)
-
-      };
-
-      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
-
-      const a = document.createElement("a");
-
-      a.href = URL.createObjectURL(blob);
-
-      a.download = "links.json";
-
-      a.click();
-
-    };
-
-
-
-    const searchInput = document.getElementById("search");
-
-    searchInput.addEventListener("input", render);
-
-    document.getElementById("clear-search").onclick = () => {
-
-      searchInput.value = "";
-
-      render();
-
-      searchInput.focus();
-
-    };
-
-
-
-    async function init() {
-
-      try {
-
-        const res = await fetch("./links.json?v=" + Date.now(), { cache: "no-store" });
-
-        if (res.ok) {
-
-          const config = await res.json();
-
-          baseLinks = config.links || [];
-
+        const section = document.createElement("section");
+        section.className = "category-section";
+
+        const header = document.createElement("div");
+        header.className = "section-header";
+        header.innerHTML = `
+          <div class="section-header-left">
+            <h3>${escapeHtml(meta.title)}</h3>
+            <p>${escapeHtml(meta.subtitle)}</p>
+          </div>
+          <span class="section-count">${items.length} ${items.length === 1 ? "painel" : "painéis"}</span>
+        `;
+
+        const grid = document.createElement("div");
+        grid.className = "grid";
+        for (const item of items) {
+          grid.appendChild(createCardElement(item));
         }
 
-      } catch (err) {
-
-        console.warn("Usando fallback de dados locais", err);
-
+        section.appendChild(header);
+        section.appendChild(grid);
+        root.appendChild(section);
       }
-
-      handleDirectRedirect(getMergedLinks());
-
-      render();
-
     }
 
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[c]));
+    }
 
+    const modal = document.getElementById("modal");
+    const form = document.getElementById("link-form");
+
+    function openModal(item = null) {
+      document.getElementById("modal-title").textContent = item ? `Editar: ${item.name}` : "Novo Painel";
+      document.getElementById("field-id").value = item ? item.id : "";
+      document.getElementById("field-name").value = item ? item.name : "";
+      document.getElementById("field-role").value = item ? (item.role || "") : "";
+      document.getElementById("field-host").value = item ? inferHost(item) : "VPS Oracle";
+      document.getElementById("field-url").value = item ? item.url || "" : "";
+      document.getElementById("field-desc").value = item ? item.description || "" : "";
+      document.getElementById("field-cat").value = item ? (item.category || "Sites & Projetos Web") : "Sites & Projetos Web";
+      document.getElementById("btn-delete").style.display = item ? "inline-block" : "none";
+      modal.showModal();
+    }
+
+    document.getElementById("btn-add").onclick = () => openModal(null);
+    document.getElementById("btn-cancel").onclick = () => modal.close();
+
+    document.getElementById("btn-delete").onclick = () => {
+      const id = document.getElementById("field-id").value;
+      if (!id) return;
+      const overrides = loadLocalOverrides();
+      overrides[id] = { _deleted: true };
+      saveLocalOverrides(overrides);
+      modal.close();
+      render();
+    };
+
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      const rawId = document.getElementById("field-id").value;
+      const name = document.getElementById("field-name").value.trim();
+      const id = rawId || name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || `link-${Date.now()}`;
+      const overrides = loadLocalOverrides();
+      overrides[id] = {
+        id,
+        name,
+        role: document.getElementById("field-role").value.trim(),
+        host: document.getElementById("field-host").value,
+        url: document.getElementById("field-url").value.trim(),
+        description: document.getElementById("field-desc").value.trim(),
+        category: document.getElementById("field-cat").value || "Sites & Projetos Web",
+        icon: "globe"
+      };
+      saveLocalOverrides(overrides);
+      modal.close();
+      render();
+    };
+
+    document.getElementById("btn-export").onclick = () => {
+      const payload = {
+        title: "Projeto Snake · Área de Comando Unificada",
+        subtitle: "Mapa visual claro de todos os seus painéis: saiba exatamente o que cada um faz e onde está rodando",
+        links: getMergedLinks().map(({ _local, ...rest }) => rest)
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "links.json";
+      a.click();
+    };
+
+    const searchInput = document.getElementById("search");
+    searchInput.addEventListener("input", render);
+    document.getElementById("clear-search").onclick = () => {
+      searchInput.value = "";
+      render();
+      searchInput.focus();
+    };
+
+    async function init() {
+      try {
+        const res = await fetch("./links.json?v=" + Date.now(), { cache: "no-store" });
+        if (res.ok) {
+          const config = await res.json();
+          if (config.links && config.links.length) baseLinks = config.links;
+        }
+      } catch (err) {
+        console.warn("Usando dados locais embutidos", err);
+      }
+      handleDirectRedirect(getMergedLinks());
+      render();
+    }
 
     init();
-
   </script>
-
 </body>
-
 </html>
-
