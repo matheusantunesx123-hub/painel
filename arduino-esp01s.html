@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nó Arduino Uno + ESP-01S · Home Assistant MQTT</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#080d0b; --card:rgba(14,23,19,0.92); --border:rgba(173,210,189,0.16); --accent:#5ca987; --accent-light:#7cc2a2; --text:#e2ebe6; --muted:#93a89c; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'IBM Plex Sans',sans-serif; background:var(--bg); color:var(--text); padding:32px 18px; line-height:1.55; }
+    .wrap { max-width:860px; margin:0 auto; display:flex; flex-direction:column; gap:18px; }
+    .box { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:22px; }
+    .tag { font-family:'IBM Plex Mono',monospace; font-size:0.74rem; color:var(--accent-light); text-transform:uppercase; letter-spacing:0.05em; }
+    h1 { font-size:1.5rem; margin:6px 0 8px; }
+    h2 { font-size:1.08rem; margin-bottom:10px; color:var(--accent-light); }
+    p, li { color:var(--muted); font-size:0.92rem; }
+    table { width:100%; border-collapse:collapse; margin-top:10px; font-size:0.88rem; }
+    th, td { border:1px solid var(--border); padding:9px 12px; text-align:left; }
+    th { color:var(--accent-light); font-family:'IBM Plex Mono',monospace; background:#050907; }
+    .btn { display:inline-block; background:#dce6df; color:#0a130f; font-weight:600; text-decoration:none; padding:9px 16px; border-radius:8px; font-size:0.86rem; margin-top:12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="box">
+      <span class="tag">casa.snake / arduino-esp01s · Hardware IoT &amp; MQTT Auto-Discovery</span>
+      <h1>Nó Arduino Uno + Ponte Wi-Fi ESP-01S (Home Assistant)</h1>
+      <p>Central de sensores no Arduino Uno R3 conectada via SoftwareSerial (D10/D11) ao módulo Wi-Fi ESP-01S (com Adaptador Azul 5V), publicando automaticamente os sensores no Home Assistant via MQTT.</p>
+      <a class="btn" href="./index.html">&larr; Voltar para a Área de Comando</a>
+    </div>
+    <div class="box">
+      <h2>Mapa de Ligação Pino a Pino (Adaptador Azul 5V)</h2>
+      <table>
+        <thead>
+          <tr><th>Pino do Adaptador ESP-01S</th><th>Pino no Arduino Uno</th><th>Função</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>VCC</strong></td><td><strong>5V</strong></td><td>Alimentação regulada pelo adaptador azul</td></tr>
+          <tr><td><strong>GND</strong></td><td><strong>GND</strong></td><td>Terra comum</td></tr>
+          <tr><td><strong>TX</strong></td><td><strong>Pino D10 (RX SoftwareSerial)</strong></td><td>Recepção de dados do ESP-01S</td></tr>
+          <tr><td><strong>RX</strong></td><td><strong>Pino D11 (TX SoftwareSerial)</strong></td><td>Envio de comandos AT para o ESP-01S</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px;">Código-fonte na pasta raiz unificada: <code>Projeto_Snake\15_Arduino_Uno_ESP01S_HA\Arduino_Uno_ESP01S_HA\Arduino_Uno_ESP01S_HA.ino</code></p>
+    </div>
+  </div>
+</body>
+</html>

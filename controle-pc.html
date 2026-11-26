@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snake Bridge · Controle Remoto do PC, iPhone e Tablet</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#080d0b; --card:rgba(14,23,19,0.92); --border:rgba(173,210,189,0.16); --accent:#5ca987; --accent-light:#7cc2a2; --text:#e2ebe6; --muted:#93a89c; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'IBM Plex Sans',sans-serif; background:var(--bg); color:var(--text); padding:32px 18px; line-height:1.55; }
+    .wrap { max-width:860px; margin:0 auto; display:flex; flex-direction:column; gap:18px; }
+    .box { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:22px; }
+    .tag { font-family:'IBM Plex Mono',monospace; font-size:0.74rem; color:var(--accent-light); text-transform:uppercase; letter-spacing:0.05em; }
+    h1 { font-size:1.5rem; margin:6px 0 8px; }
+    h2 { font-size:1.08rem; margin-bottom:10px; color:var(--accent-light); }
+    p, li { color:var(--muted); font-size:0.92rem; }
+    ul { padding-left:20px; display:flex; flex-direction:column; gap:6px; }
+    pre { font-family:'IBM Plex Mono',monospace; font-size:0.82rem; background:#050907; border:1px solid var(--border); padding:14px; border-radius:8px; color:var(--text); overflow-x:auto; margin-top:8px; }
+    .btn { display:inline-block; background:#dce6df; color:#0a130f; font-weight:600; text-decoration:none; padding:9px 16px; border-radius:8px; font-size:0.86rem; margin-top:12px; margin-right:8px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="box">
+      <span class="tag">notebook.snake / controle-pc · Ponte Multi-Dispositivos</span>
+      <h1>Snake Bridge (Controle Remoto do PC, iPhone 13 e Galaxy Tab S7 FE)</h1>
+      <p>Ponte local e via Tailscale para enviar e receber arquivos, capturar tela e executar comandos rápidos entre o seu Notebook Windows, iPhone 13, Tablet Galaxy Tab S7 FE e servidores.</p>
+      <a class="btn" href="./ios_shortcuts.html">Ver Guia de Atalhos iPhone / Tablet</a>
+      <a class="btn" href="./index.html" style="background:transparent;color:var(--text);border:1px solid var(--border);">&larr; Voltar para a Área de Comando</a>
+    </div>
+    <div class="box">
+      <h2>Como Iniciar no Notebook</h2>
+      <ul>
+        <li><strong>Pelo Atalho da Área de Trabalho:</strong> Clique em <code>Ligar Snake Bridge</code>.</li>
+        <li><strong>Pasta na Raiz Unificada:</strong> <code>C:\Users\mathe\Desktop\Projeto_Snake\03_Oracle_Projetos_PM2\snake-bridge</code></li>
+      </ul>
+      <pre>python "C:\Users\mathe\Desktop\Projeto_Snake\03_Oracle_Projetos_PM2\snake-bridge\snake_bridge.py"</pre>
+    </div>
+  </div>
+</body>
+</html>
