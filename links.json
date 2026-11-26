@@ -123,6 +123,18 @@
       "status": "ready"
     },
     {
+      "id": "debian-github-radar",
+      "name": "Radar GitHub · Caçador de Projetos",
+      "role": "Viabilidade IA, Triagem & Prompt Snake",
+      "host": "Servidor Debian",
+      "pretty_url": "matheusserver / radar",
+      "description": "Caça repositórios no GitHub por busca, URL ou radar diário, calcula viabilidade e facilidade de integração (heurística + OmniRoute IA), salva status (Ainda não / Executado / Não quero) e gera prompt pronto para a IA.",
+      "url": "http://100.112.218.88/radar",
+      "category": "IA & Agentes",
+      "icon": "code",
+      "status": "ready"
+    },
+    {
       "id": "email-classifier",
       "name": "Organizador de E-mails IA (Gmail)",
       "role": "Triagem e Anti-Fraude do Gmail",
